@@ -8,20 +8,46 @@
 
 /* Begin PBXBuildFile section */
 		E85F7BA11DBBEAE0007A5C55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BA01DBBEAE0007A5C55 /* AppDelegate.swift */; };
-		E85F7BA31DBBEAE0007A5C55 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BA21DBBEAE0007A5C55 /* ViewController.swift */; };
-		E85F7BA61DBBEAE0007A5C55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E85F7BA41DBBEAE0007A5C55 /* Main.storyboard */; };
 		E85F7BA81DBBEAE0007A5C55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E85F7BA71DBBEAE0007A5C55 /* Assets.xcassets */; };
 		E85F7BAB1DBBEAE0007A5C55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E85F7BA91DBBEAE0007A5C55 /* LaunchScreen.storyboard */; };
+		E85F7BB31DBBEB14007A5C55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E85F7BB21DBBEB14007A5C55 /* Main.storyboard */; };
+		E85F7BB51DBBEB45007A5C55 /* WeatherDataArrays.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BB41DBBEB45007A5C55 /* WeatherDataArrays.swift */; };
+		E85F7BB71DBBEB53007A5C55 /* UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BB61DBBEB53007A5C55 /* UpdateView.swift */; };
+		E85F7BB91DBBEB5D007A5C55 /* TempViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BB81DBBEB5D007A5C55 /* TempViewController.swift */; };
+		E85F7BBB1DBBEB64007A5C55 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BBA1DBBEB64007A5C55 /* SettingsViewController.swift */; };
+		E85F7BBD1DBBEB6C007A5C55 /* SettingsDataArrays.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BBC1DBBEB6C007A5C55 /* SettingsDataArrays.swift */; };
+		E85F7BBF1DBBEB71007A5C55 /* PrecipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BBE1DBBEB71007A5C55 /* PrecipViewController.swift */; };
+		E85F7BC11DBBEB7D007A5C55 /* LocationFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BC01DBBEB7D007A5C55 /* LocationFinderViewController.swift */; };
+		E85F7BC31DBBEB95007A5C55 /* FetchAllData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BC21DBBEB95007A5C55 /* FetchAllData.swift */; };
+		E85F7BC51DBBEB9B007A5C55 /* DateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BC41DBBEB9B007A5C55 /* DateHandler.swift */; };
+		E85F7BC71DBBEBA8007A5C55 /* ArrayCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BC61DBBEBA8007A5C55 /* ArrayCalculations.swift */; };
+		E85F7BC91DBBEDE2007A5C55 /* LocationFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BC81DBBEDE2007A5C55 /* LocationFinder.swift */; };
+		E85F7BCB1DBBEE6E007A5C55 /* NOAARequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BCA1DBBEE6E007A5C55 /* NOAARequests.swift */; };
+		F4197B724BAEDFE09977FC8E /* Pods_CloudView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74A38990F51C8DDCE8455E06 /* Pods_CloudView.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18DC5E18C218C8A1B980AD0D /* Pods-CloudView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloudView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CloudView/Pods-CloudView.debug.xcconfig"; sourceTree = "<group>"; };
+		57D06E6E78697FA393437BBA /* Pods-CloudView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloudView.release.xcconfig"; path = "Pods/Target Support Files/Pods-CloudView/Pods-CloudView.release.xcconfig"; sourceTree = "<group>"; };
+		74A38990F51C8DDCE8455E06 /* Pods_CloudView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CloudView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E85F7B9D1DBBEAE0007A5C55 /* CloudView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E85F7BA01DBBEAE0007A5C55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E85F7BA21DBBEAE0007A5C55 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E85F7BA51DBBEAE0007A5C55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E85F7BA71DBBEAE0007A5C55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E85F7BAA1DBBEAE0007A5C55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E85F7BAC1DBBEAE0007A5C55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E85F7BB21DBBEB14007A5C55 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		E85F7BB41DBBEB45007A5C55 /* WeatherDataArrays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherDataArrays.swift; sourceTree = "<group>"; };
+		E85F7BB61DBBEB53007A5C55 /* UpdateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateView.swift; sourceTree = "<group>"; };
+		E85F7BB81DBBEB5D007A5C55 /* TempViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempViewController.swift; sourceTree = "<group>"; };
+		E85F7BBA1DBBEB64007A5C55 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E85F7BBC1DBBEB6C007A5C55 /* SettingsDataArrays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDataArrays.swift; sourceTree = "<group>"; };
+		E85F7BBE1DBBEB71007A5C55 /* PrecipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrecipViewController.swift; sourceTree = "<group>"; };
+		E85F7BC01DBBEB7D007A5C55 /* LocationFinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationFinderViewController.swift; sourceTree = "<group>"; };
+		E85F7BC21DBBEB95007A5C55 /* FetchAllData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchAllData.swift; sourceTree = "<group>"; };
+		E85F7BC41DBBEB9B007A5C55 /* DateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHandler.swift; sourceTree = "<group>"; };
+		E85F7BC61DBBEBA8007A5C55 /* ArrayCalculations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayCalculations.swift; sourceTree = "<group>"; };
+		E85F7BC81DBBEDE2007A5C55 /* LocationFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationFinder.swift; sourceTree = "<group>"; };
+		E85F7BCA1DBBEE6E007A5C55 /* NOAARequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NOAARequests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +55,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4197B724BAEDFE09977FC8E /* Pods_CloudView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F524AFE81C24FA340129553 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				74A38990F51C8DDCE8455E06 /* Pods_CloudView.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E85F7B941DBBEAE0007A5C55 = {
 			isa = PBXGroup;
 			children = (
 				E85F7B9F1DBBEAE0007A5C55 /* CloudView */,
 				E85F7B9E1DBBEAE0007A5C55 /* Products */,
+				EB6C74C75E11DDB367453B49 /* Pods */,
+				5F524AFE81C24FA340129553 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +91,34 @@
 		E85F7B9F1DBBEAE0007A5C55 /* CloudView */ = {
 			isa = PBXGroup;
 			children = (
+				E85F7BB21DBBEB14007A5C55 /* Main.storyboard */,
 				E85F7BA01DBBEAE0007A5C55 /* AppDelegate.swift */,
-				E85F7BA21DBBEAE0007A5C55 /* ViewController.swift */,
-				E85F7BA41DBBEAE0007A5C55 /* Main.storyboard */,
+				E85F7BB41DBBEB45007A5C55 /* WeatherDataArrays.swift */,
+				E85F7BB61DBBEB53007A5C55 /* UpdateView.swift */,
+				E85F7BB81DBBEB5D007A5C55 /* TempViewController.swift */,
+				E85F7BBA1DBBEB64007A5C55 /* SettingsViewController.swift */,
+				E85F7BBC1DBBEB6C007A5C55 /* SettingsDataArrays.swift */,
+				E85F7BBE1DBBEB71007A5C55 /* PrecipViewController.swift */,
+				E85F7BC01DBBEB7D007A5C55 /* LocationFinderViewController.swift */,
+				E85F7BC21DBBEB95007A5C55 /* FetchAllData.swift */,
+				E85F7BC41DBBEB9B007A5C55 /* DateHandler.swift */,
+				E85F7BC61DBBEBA8007A5C55 /* ArrayCalculations.swift */,
+				E85F7BC81DBBEDE2007A5C55 /* LocationFinder.swift */,
+				E85F7BCA1DBBEE6E007A5C55 /* NOAARequests.swift */,
 				E85F7BA71DBBEAE0007A5C55 /* Assets.xcassets */,
 				E85F7BA91DBBEAE0007A5C55 /* LaunchScreen.storyboard */,
 				E85F7BAC1DBBEAE0007A5C55 /* Info.plist */,
 			);
 			path = CloudView;
+			sourceTree = "<group>";
+		};
+		EB6C74C75E11DDB367453B49 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				18DC5E18C218C8A1B980AD0D /* Pods-CloudView.debug.xcconfig */,
+				57D06E6E78697FA393437BBA /* Pods-CloudView.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +128,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E85F7BAF1DBBEAE0007A5C55 /* Build configuration list for PBXNativeTarget "CloudView" */;
 			buildPhases = (
+				25676C4FEDF81783ECB950DA /* [CP] Check Pods Manifest.lock */,
 				E85F7B991DBBEAE0007A5C55 /* Sources */,
 				E85F7B9A1DBBEAE0007A5C55 /* Frameworks */,
 				E85F7B9B1DBBEAE0007A5C55 /* Resources */,
+				ACEA122DEC455CFDC5B2D03D /* [CP] Embed Pods Frameworks */,
+				F4C2AE134FBF4784503D6F51 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,6 +156,7 @@
 				TargetAttributes = {
 					E85F7B9C1DBBEAE0007A5C55 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = J366ESWQGT;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -125,18 +186,77 @@
 			files = (
 				E85F7BAB1DBBEAE0007A5C55 /* LaunchScreen.storyboard in Resources */,
 				E85F7BA81DBBEAE0007A5C55 /* Assets.xcassets in Resources */,
-				E85F7BA61DBBEAE0007A5C55 /* Main.storyboard in Resources */,
+				E85F7BB31DBBEB14007A5C55 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		25676C4FEDF81783ECB950DA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		ACEA122DEC455CFDC5B2D03D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CloudView/Pods-CloudView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4C2AE134FBF4784503D6F51 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CloudView/Pods-CloudView-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E85F7B991DBBEAE0007A5C55 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E85F7BA31DBBEAE0007A5C55 /* ViewController.swift in Sources */,
+				E85F7BC91DBBEDE2007A5C55 /* LocationFinder.swift in Sources */,
+				E85F7BC51DBBEB9B007A5C55 /* DateHandler.swift in Sources */,
+				E85F7BB91DBBEB5D007A5C55 /* TempViewController.swift in Sources */,
+				E85F7BCB1DBBEE6E007A5C55 /* NOAARequests.swift in Sources */,
+				E85F7BC11DBBEB7D007A5C55 /* LocationFinderViewController.swift in Sources */,
+				E85F7BB51DBBEB45007A5C55 /* WeatherDataArrays.swift in Sources */,
+				E85F7BBD1DBBEB6C007A5C55 /* SettingsDataArrays.swift in Sources */,
+				E85F7BB71DBBEB53007A5C55 /* UpdateView.swift in Sources */,
+				E85F7BBB1DBBEB64007A5C55 /* SettingsViewController.swift in Sources */,
+				E85F7BC71DBBEBA8007A5C55 /* ArrayCalculations.swift in Sources */,
+				E85F7BC31DBBEB95007A5C55 /* FetchAllData.swift in Sources */,
+				E85F7BBF1DBBEB71007A5C55 /* PrecipViewController.swift in Sources */,
 				E85F7BA11DBBEAE0007A5C55 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,14 +264,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E85F7BA41DBBEAE0007A5C55 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E85F7BA51DBBEAE0007A5C55 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E85F7BA91DBBEAE0007A5C55 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -256,8 +368,10 @@
 		};
 		E85F7BB01DBBEAE0007A5C55 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18DC5E18C218C8A1B980AD0D /* Pods-CloudView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = J366ESWQGT;
 				INFOPLIST_FILE = CloudView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.CloudView;
@@ -268,8 +382,10 @@
 		};
 		E85F7BB11DBBEAE0007A5C55 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57D06E6E78697FA393437BBA /* Pods-CloudView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = J366ESWQGT;
 				INFOPLIST_FILE = CloudView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.CloudView;
@@ -297,6 +413,7 @@
 				E85F7BB11DBBEAE0007A5C55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

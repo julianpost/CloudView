@@ -118,28 +118,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-143.19999999999999" y="75.112443778110944"/>
+            <point key="canvasLocation" x="-204" y="75"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="hjZ-de-nw4">
             <objects>
-                <searchDisplayController id="hGn-TI-ZZm">
-                    <connections>
-                        <outlet property="delegate" destination="Fsj-5g-4cU" id="BF4-vE-RMn"/>
-                        <outlet property="searchContentsController" destination="Fsj-5g-4cU" id="WUT-i4-Ge0"/>
-                        <outlet property="searchResultsDataSource" destination="Fsj-5g-4cU" id="H1e-bV-PIh"/>
-                        <outlet property="searchResultsDelegate" destination="Fsj-5g-4cU" id="RfK-EJ-DO4"/>
-                    </connections>
-                </searchDisplayController>
-                <searchDisplayController id="cGn-IR-9cr">
-                    <connections>
-                        <outlet property="delegate" destination="Fsj-5g-4cU" id="05P-iZ-c5Q"/>
-                        <outlet property="searchContentsController" destination="Fsj-5g-4cU" id="lKb-ZR-Vfc"/>
-                        <outlet property="searchResultsDataSource" destination="Fsj-5g-4cU" id="46p-QI-uBc"/>
-                        <outlet property="searchResultsDelegate" destination="Fsj-5g-4cU" id="woJ-UD-ZD4"/>
-                    </connections>
-                </searchDisplayController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WBx-15-fqK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Fsj-5g-4cU" customClass="SettingsViewController" customModule="CloudView" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CVy-8d-GVD"/>
@@ -315,8 +298,25 @@
                         <outlet property="searchDisplayController" destination="cGn-IR-9cr" id="kaJ-3u-7s9"/>
                     </connections>
                 </viewController>
+                <searchDisplayController id="hGn-TI-ZZm">
+                    <connections>
+                        <outlet property="delegate" destination="Fsj-5g-4cU" id="BF4-vE-RMn"/>
+                        <outlet property="searchContentsController" destination="Fsj-5g-4cU" id="WUT-i4-Ge0"/>
+                        <outlet property="searchResultsDataSource" destination="Fsj-5g-4cU" id="H1e-bV-PIh"/>
+                        <outlet property="searchResultsDelegate" destination="Fsj-5g-4cU" id="RfK-EJ-DO4"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="cGn-IR-9cr">
+                    <connections>
+                        <outlet property="delegate" destination="Fsj-5g-4cU" id="05P-iZ-c5Q"/>
+                        <outlet property="searchContentsController" destination="Fsj-5g-4cU" id="lKb-ZR-Vfc"/>
+                        <outlet property="searchResultsDataSource" destination="Fsj-5g-4cU" id="46p-QI-uBc"/>
+                        <outlet property="searchResultsDelegate" destination="Fsj-5g-4cU" id="woJ-UD-ZD4"/>
+                    </connections>
+                </searchDisplayController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WBx-15-fqK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-143" y="830"/>
+            <point key="canvasLocation" x="-204" y="830"/>
         </scene>
         <!--Precip View Controller-->
         <scene sceneID="Ikb-ia-O08">
@@ -433,7 +433,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pGX-2T-rE3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-856.79999999999995" y="75.112443778110944"/>
+            <point key="canvasLocation" x="-892" y="75"/>
         </scene>
         <!--Location Finder View Controller-->
         <scene sceneID="ski-fx-b7J">
@@ -497,7 +497,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wVx-ZV-BUM" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bPF-us-fjI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bPF-us-fjI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

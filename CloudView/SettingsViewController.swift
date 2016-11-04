@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+/*class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var tblResults: UITableView!
     
@@ -201,7 +201,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func loadListOfLocations() {
         
-        CallForLocations.requestLocations(dateFor.stringOfNormalYearStart, endDate: dateFor.stringOfNormalYearEnd, dataSet: "GHCND", dataType: "PRCP", zipCode: zipField.text ?? "")  { responseObject in
+        CallForLocations.requestLocations(dateFor.stringOfNormalYearStart, endDate: dateFor.stringOfNormalYearEnd, dataSet: "GHCND", dataType: "PRCP")  { responseObject in
             // use responseObject and error here
             print("response array\(responseObject)")
             //mainSettingsData.stationsArray = responseObject
@@ -219,3 +219,4 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }*/
 
 }
+*/

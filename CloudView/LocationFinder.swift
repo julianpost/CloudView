@@ -13,15 +13,19 @@ import GooglePlaces
 
 class CallForLocations {
     
+    static func requestLocations(_ startDate: String, endDate: String, dataSet: String, dataType: String, completionHandler: @escaping ([String:String]) -> ()) {
+        
+        self.makeCategoryCall(startDate, endDate: endDate, dataSet: dataSet, dataType: dataType, completionHandler: completionHandler)
+        
+    }
     
     
-    static func makeGoogleCall(_ startDate: String, endDate: String, dataSet: String, dataType: String, zipCode: String, completionHandler: @escaping ([String]) -> ()) {
+    static func makeCategoryCall(_ startDate: String, endDate: String, dataSet: String, dataType: String, completionHandler: @escaping ([String:String]) -> ()) {
         
+        print("\(mainSettingsData.bottomLeftLat), \(mainSettingsData.bottomLeftLon), \(mainSettingsData.topRightLat), \(mainSettingsData.topRightLon)")
         
-        
-        //let googleAPIKey = "AIzaSyA3Flb3HdA0EjlxVoxnEMUesGSBKhM6r_s"
-        var dict: [[String:AnyObject]] = [[:]]
-        var array: [String] = []
+        var results: [[String:AnyObject]] = [[:]]
+        var dict: [String:String] = [:]
         
         
         let headers = [
@@ -31,87 +35,8 @@ class CallForLocations {
         
         let parameters = [
             
-            "limit": "20",
-            //"datatypeid": dataType,
-            //"datasetid" : "GHCND",
-            //"startdate": startDate,
-            //"enddate" : endDate,
-            //"locationcategoryid" : "ST",
-            //"sortfield" : "name",
-            //"sortorder" : "asc",
-            //"locationcategoryid" : "ZIP:\(zipCode)"
-            //"datasetid" : dataSet,
-        ]
-        
-        
-        Alamofire.request("https://www.googleapis.com/geolocation/v1/geolocate?key=", headers: headers)
-            .validate(statusCode: 200..<300).responseJSON { (responseData) -> Void in
-                debugPrint(responseData)
-                switch responseData.result {
-                case .success:
-                    print("Validation Successful \(startDate)")
-                    let swiftyJsonVar = JSON(responseData.result.value!)
-                    print(swiftyJsonVar)
-                    
-                    if let resData = swiftyJsonVar["results"].arrayObject {
-                        print(resData)
-                        dict = resData as! [[String:AnyObject]]
-                        //  print(arrayVar)
-                        print(dict)
-                        
-                        for i in dict {
-                            if let name = i["name"] {
-                                let stringOfName = "\(name)"
-                                print(stringOfName)
-                                array.append(stringOfName)
-                                
-                            }
-                        }
-                        print(array)
-                        completionHandler(array)
-                        
-                    }
-                    
-                    
-                case .failure(let error):
-                    print(error)
-                }
-                
-                
-                
-                
-        }
-        
-    }
-
-    
-    
-    
-    
-    
-    
-    static func requestLocations(_ startDate: String, endDate: String, dataSet: String, dataType: String, zipCode: String, completionHandler: @escaping ([String]) -> ()) {
-        
-        self.makeCategoryCall(startDate, endDate: endDate, dataSet: dataSet, dataType: dataType, zipCode: zipCode, completionHandler: completionHandler)
-        
-    }
-    
-    
-    static func makeCategoryCall(_ startDate: String, endDate: String, dataSet: String, dataType: String, zipCode: String, completionHandler: @escaping ([String]) -> ()) {
-        
-        var dict: [[String:AnyObject]] = [[:]]
-        var array: [String] = []
-        
-        
-        let headers = [
-            "token": "qMbhulVTJqFjFMUdHrwmhbxVyIIeqmOs"
-        ]
-        
-        
-        let parameters = [
-            
-            "limit": "20",
-            "extent" : mainSettingsData.extent
+            "limit": "100",
+            "extent" : "\(mainSettingsData.topRightLat), \(mainSettingsData.topRightLon), \(mainSettingsData.bottomLeftLat), \(mainSettingsData.bottomLeftLon)"
             //"datatypeid": dataType,
             //"datasetid" : "GHCND",
             //"startdate": startDate,
@@ -127,6 +52,7 @@ class CallForLocations {
         Alamofire.request("https://www.ncdc.noaa.gov/cdo-web/api/v2/stations?", parameters: parameters, headers: headers)
             .validate(statusCode: 200..<300).responseJSON { (responseData) -> Void in
                 debugPrint(responseData)
+                print("blueee...42... \(responseData.data)")
                 switch responseData.result {
                 case .success:
                     print("Validation Successful \(startDate)")
@@ -135,23 +61,35 @@ class CallForLocations {
                     
                     if let resData = swiftyJsonVar["results"].arrayObject {
                         print(resData)
-                        dict = resData as! [[String:AnyObject]]
+                        results = resData as! [[String:AnyObject]]
                         //  print(arrayVar)
-                        print(dict)
+                        print(results)
                         
-                        for i in dict {
-                            if let name = i["name"] {
+                        var stationFiles = [NOAAStationFile]()
+                        for item in results {
+                            if let stationFile = NOAAStationFile(json: item) {
+                                stationFiles.append(stationFile)
+                            }
+                        }
+                        mainSettingsData.stationFile = stationFiles
+                        for i in stationFiles {
+                            print("\(i.name) has id \(i.stationID)")
+                        }
+                        
+                        for i in results {
+                            if let name = i["name"], let stationID = i["id"] {
                                 let stringOfName = "\(name)"
+                                let stringOfStationID = "\(stationID)"
                                 print(stringOfName)
-                                array.append(stringOfName)
+                                //array.append(stringOfName)
+                                dict[stringOfName] = stringOfStationID
                                 
                             }
                         }
-                        print(array)
-                        completionHandler(array)
+                        //print(array)
+                        completionHandler(dict)
                         
                     }
-                    
                     
                 case .failure(let error):
                     print(error)

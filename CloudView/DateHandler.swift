@@ -11,7 +11,7 @@ import UIKit
 
 class DateFunctions {
     
-    static func stringToNSDate(_ string: String) -> Date {
+    static func stringToDate(_ string: String) -> Date {
         var date: Date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
@@ -21,6 +21,20 @@ class DateFunctions {
         //  print("after \(date)")
         
         return date
+        
+        
+    }
+    
+    static func dateToDarkSkyString(_ date: Date) -> String {
+        var string: String
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "[yyyy]-[MM]-[dd]T[HH]:[mm]:[ss]"
+        string = dateFormatter.string(from: date)
+        //  print("before \(date)")
+        //  date = NSCalendar.currentCalendar().startOfDayForDate(date)
+        //  print("after \(date)")
+        
+        return string
         
         
     }

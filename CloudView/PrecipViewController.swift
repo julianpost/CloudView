@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import GooglePlaces
 
 
-class PrecipViewController: UIViewController {
+class PrecipViewController: UIViewController, CLLocationManagerDelegate {
     
     
     @IBOutlet weak var precipViewOne: UIView!
     @IBOutlet weak var precipViewTwo: UIView!
     @IBOutlet weak var precipViewThree: UIView!
+    
+    var placesClient: GMSPlacesClient?
+    let locationManager = CLLocationManager()
     
     
     @IBAction func indexChanged(_ sender: UISegmentedControl) {
@@ -46,11 +50,44 @@ class PrecipViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FetchAllData.precip(precipViewOne, viewTwo: precipViewTwo, viewThree: precipViewThree)
+        GMSPlacesClient.provideAPIKey("AIzaSyA3Flb3HdA0EjlxVoxnEMUesGSBKhM6r_s")
+        
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        placesClient = GMSPlacesClient.shared()
+        
+        FetchAllData.getLatLon(viewOne: precipViewOne, viewTwo: precipViewTwo, viewThree: precipViewThree, placesClient: placesClient!)
+        
+        /*placesClient?.currentPlace(callback: {
+            (placeLikelihoodList: GMSPlaceLikelihoodList?, error: Error?) -> Void in
+            if let error = error {
+                print("Pick Place error: \(error.localizedDescription)")
+                return
+            }
+            
+            
+            if let placeLikelihoodList = placeLikelihoodList {
+                if let place = placeLikelihoodList.likelihoods.first?.place {
+                    
+                    mainSettingsData.latitude = "\(place.coordinate.latitude)"
+                    mainSettingsData.longitude = "\(place.coordinate.longitude)"
+                    
+                    print(mainSettingsData.latitude)
+                    print(mainSettingsData.longitude)
+                }
+                
+            }
+            FetchAllData.precip(self.precipViewOne, viewTwo: self.precipViewTwo, viewThree: self.precipViewThree)
+        }) */
+
+        
+        //FetchAllData.precip(precipViewOne, viewTwo: precipViewTwo, viewThree: precipViewThree)
         
         precipViewOne.layer.isHidden = true
         precipViewTwo.layer.isHidden = true
         precipViewThree.layer.isHidden = false
+        
+        
         
       /*  CallForLocations.requestLocationCategories(dateFor.stringOfNormalYearStart, endDate: dateFor.stringOfNormalYearEnd, dataSet: "GHCND", dataType: "PRCP")  { responseObject in
             // use responseObject and error here

@@ -175,6 +175,34 @@ class CallForLocations {
         }
         
     }
-
+    
+    private func nOAAStationFileArrayFromResponse(response: DataResponse<Any>) -> Result<[NOAAStationFile]> {
+        guard response.result.error == nil else {
+            print(response.result.error!)
+            return .failure(GitHubAPIManagerError.network(error: response.result.error!))
+        }
+        
+        // make sure we got JSON and it's an array
+        guard let jsonArray = response.result.value as? [[String: Any]] else {
+            print("didn't get array of gists object as JSON from API")
+            return .failure(GitHubAPIManagerError.objectSerialization(reason:
+                "Did not get JSON dictionary in response"))
+        }
+        
+        // check for "message" errors in the JSON because this API does that
+        if let jsonDictionary = response.result.value as? [String: Any],
+            let errorMessage = jsonDictionary["message"] as? String {
+            return .failure(GitHubAPIManagerError.apiProvidedError(reason: errorMessage))
+        }
+        
+        // turn JSON in to gists
+        var nOAAStationFiles = [NOAAStationFile]()
+        for item in jsonArray {
+            if let nOAAStationFile = NOAAStationFile(json: item) {
+                nOAAStationFiles.append(nOAAStationFile)
+            }
+        }
+        return .success(nOAAStationFiles)
+    }
 
 }

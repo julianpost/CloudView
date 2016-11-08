@@ -103,28 +103,60 @@
 			children = (
 				E85F7BB21DBBEB14007A5C55 /* Main.storyboard */,
 				E85F7BA01DBBEAE0007A5C55 /* AppDelegate.swift */,
-				E85F7BB41DBBEB45007A5C55 /* WeatherDataArrays.swift */,
-				E85F7BB61DBBEB53007A5C55 /* UpdateView.swift */,
-				E85F7BBE1DBBEB71007A5C55 /* PrecipViewController.swift */,
-				E85F7BB81DBBEB5D007A5C55 /* TempViewController.swift */,
-				E85F7BBA1DBBEB64007A5C55 /* SettingsViewController.swift */,
-				E85F7BC01DBBEB7D007A5C55 /* LocationFinderViewController.swift */,
-				E85F7BBC1DBBEB6C007A5C55 /* SettingsDataArrays.swift */,
-				E85F7BC21DBBEB95007A5C55 /* FetchAllData.swift */,
-				E85F7BC41DBBEB9B007A5C55 /* DateHandler.swift */,
-				E85F7BC61DBBEBA8007A5C55 /* ArrayCalculations.swift */,
-				E85F7BC81DBBEDE2007A5C55 /* LocationFinder.swift */,
-				E85F7BCA1DBBEE6E007A5C55 /* NOAARequests.swift */,
-				E8C4418C1DCB73F8005B8007 /* APIManager.swift */,
-				E89AB31B1DCA35820087A2CE /* DSObservations.swift */,
-				E89AB31D1DCA434A0087A2CE /* DSDaily.swift */,
-				E8471BBE1DCD14AA007EF8E0 /* NOAAStationFile.swift */,
-				E89AB31F1DCA5BD90087A2CE /* WeatherRouter.swift */,
+				E8A1055F1DCFD8290000450C /* View Controllers */,
+				E8A105611DCFD8910000450C /* Web Requests */,
+				E8A1055E1DCFD7D10000450C /* Files */,
+				E8A105621DCFD8D30000450C /* Helpers */,
 				E85F7BA71DBBEAE0007A5C55 /* Assets.xcassets */,
 				E85F7BA91DBBEAE0007A5C55 /* LaunchScreen.storyboard */,
 				E85F7BAC1DBBEAE0007A5C55 /* Info.plist */,
 			);
 			path = CloudView;
+			sourceTree = "<group>";
+		};
+		E8A1055E1DCFD7D10000450C /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				E85F7BB41DBBEB45007A5C55 /* WeatherDataArrays.swift */,
+				E85F7BBC1DBBEB6C007A5C55 /* SettingsDataArrays.swift */,
+				E89AB31D1DCA434A0087A2CE /* DSDaily.swift */,
+				E89AB31B1DCA35820087A2CE /* DSObservations.swift */,
+				E8471BBE1DCD14AA007EF8E0 /* NOAAStationFile.swift */,
+			);
+			name = Files;
+			sourceTree = "<group>";
+		};
+		E8A1055F1DCFD8290000450C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E85F7BBE1DBBEB71007A5C55 /* PrecipViewController.swift */,
+				E85F7BB81DBBEB5D007A5C55 /* TempViewController.swift */,
+				E85F7BC01DBBEB7D007A5C55 /* LocationFinderViewController.swift */,
+				E85F7BBA1DBBEB64007A5C55 /* SettingsViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		E8A105611DCFD8910000450C /* Web Requests */ = {
+			isa = PBXGroup;
+			children = (
+				E85F7BC81DBBEDE2007A5C55 /* LocationFinder.swift */,
+				E85F7BC21DBBEB95007A5C55 /* FetchAllData.swift */,
+				E89AB31F1DCA5BD90087A2CE /* WeatherRouter.swift */,
+				E8C4418C1DCB73F8005B8007 /* APIManager.swift */,
+				E85F7BCA1DBBEE6E007A5C55 /* NOAARequests.swift */,
+			);
+			name = "Web Requests";
+			sourceTree = "<group>";
+		};
+		E8A105621DCFD8D30000450C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E85F7BB61DBBEB53007A5C55 /* UpdateView.swift */,
+				E85F7BC41DBBEB9B007A5C55 /* DateHandler.swift */,
+				E85F7BC61DBBEBA8007A5C55 /* ArrayCalculations.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		EB6C74C75E11DDB367453B49 /* Pods */ = {

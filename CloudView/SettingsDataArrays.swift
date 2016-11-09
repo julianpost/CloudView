@@ -38,8 +38,6 @@ struct SettingsDataArrays {
         self.topRightLon = ""
         
     }
-    
-    
 }
 
 var mainSettingsData = SettingsDataArrays(stationsArray: [:], stationFile: "", extent: "", currentStation: "", minTempOne: 0, maxTempOne: 0, minTempTwo: 0, maxTempTwo: 0, minTempThree: 0, maxTempThree: 0, latitude: "", longitude: "", bottomLeftLat: "", bottomLeftLon: "", topRightLat: "", topRightLon: "")

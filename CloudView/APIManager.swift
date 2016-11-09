@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-enum GitHubAPIManagerError: Error {
+/*enum GitHubAPIManagerError: Error {
     case network(error: Error)
     case apiProvidedError(reason: String)
     case authCouldNot(reason: String)
@@ -17,54 +17,44 @@ enum GitHubAPIManagerError: Error {
     case objectSerialization(reason: String)
 }
 
-class DSAPIManager {
-    
-    func getStations(_ startDate: String, endDate: String, dataSet: String, dataType: String, completionHandler: @escaping (Result<[NOAAStationFile]>) -> Void) {
-        
-        let headers = [
-            "token": "qMbhulVTJqFjFMUdHrwmhbxVyIIeqmOs"
-        ]
-        
-        
-        let parameters = [
-            
-            "limit": "100",
-            "extent" : "\(mainSettingsData.topRightLat), \(mainSettingsData.topRightLon), \(mainSettingsData.bottomLeftLat), \(mainSettingsData.bottomLeftLon)"
-            
-            ]
-        
-    Alamofire.request("https://www.ncdc.noaa.gov/cdo-web/api/v2/stations?", parameters: parameters, headers: headers)
-    .validate(statusCode: 200..<300).responseJSON { response in
-        if let urlResponse = response.response {
-        let result = self.nOAAStationFileArrayFromResponse(response: response)
-            print(result)
-            completionHandler(result)
+class GitHubAPIManager {
+        // MARK: - API Calls
+    func printPublicGists() -> Void {
+        Alamofire.request(GistRouter.getPublic())
+            .responseString { response in
+                if let receivedString = response.result.value {
+                    print(receivedString)
+                }
         }
-        
-    /*if let receivedResponse = response.result.value {
-    nOAAStationFileArrayFromResponse(response: receivedResponse)
-    }*/
     }
     
-}
-
-
-    // MARK: - API Calls
-  /*  func fetchDSWeather(completionHandler: @escaping (Result<[DSObservations]>, String?) -> Void) {
-        Alamofire.request("https://api.darksky.net/forecast/926af8e65c308d15a6f1c76a09e24631/\(mainSettingsData.latitude),\(mainSettingsData.longitude),\(Date().timeIntervalSince1970)")
+    func fetchPublicGists(pageToLoad: String?, completionHandler:
+        @escaping (Result<[Gist]>, String?) -> Void) {
+        if let urlString = pageToLoad {
+            fetchGists(GistRouter.getAtPath(urlString), completionHandler: completionHandler)
+        } else {
+            fetchGists(GistRouter.getPublic(), completionHandler: completionHandler)
+        }
+    }
+    
+    
+    
+    func fetchGists(_ urlRequest: URLRequestConvertible,
+                    completionHandler: @escaping (Result<[Gist]>, String?) -> Void) {
+        Alamofire.request(urlRequest)
             .responseJSON { response in
-                // if let urlResponse = response.response,
-                /*let authError = self.checkUnauthorized(urlResponse: urlResponse) {
-                 completionHandler(.failure(authError), nil)
-                 return
-                 }*/
-                let result = self.dSWeatherArrayFromResponse(response: response)
+                if let urlResponse = response.response,
+                    let authError = self.checkUnauthorized(urlResponse: urlResponse) {
+                    completionHandler(.failure(authError), nil)
+                    return
+                }
+                let result = self.gistArrayFromResponse(response: response)
                 let next = self.parseNextPageFromHeaders(response: response.response)
                 completionHandler(result, next)
         }
     }
-
-    // MARK: - Helpers
+    
+        // MARK: - Helpers
     func imageFrom(urlString: String,
                    completionHandler: @escaping (UIImage?, Error?) -> Void) {
         let _ = Alamofire.request(urlString)
@@ -77,9 +67,9 @@ class DSAPIManager {
                 let image = UIImage(data: data)
                 completionHandler(image, nil)
         }
-    }*/
+    }
     
-    private func nOAAStationFileArrayFromResponse(response: DataResponse<Any>) -> Result<[NOAAStationFile]> {
+    private func gistArrayFromResponse(response: DataResponse<Any>) -> Result<[Gist]> {
         guard response.result.error == nil else {
             print(response.result.error!)
             return .failure(GitHubAPIManagerError.network(error: response.result.error!))
@@ -99,47 +89,25 @@ class DSAPIManager {
         }
         
         // turn JSON in to gists
-        var nOAAStationFiles = [NOAAStationFile]()
+        var gists = [Gist]()
         for item in jsonArray {
-            if let nOAAStationFile = NOAAStationFile(json: item) {
-                nOAAStationFiles.append(nOAAStationFile)
+            if let gist = Gist(json: item) {
+                gists.append(gist)
             }
         }
-        return .success(nOAAStationFiles)
+        return .success(gists)
     }
-
-   /* private func dSWeatherArrayFromResponse(response: DataResponse<Any>) -> Result<[DSObservations]> {
-        guard response.result.error == nil else {
-            print(response.result.error!)
-            return .failure(GitHubAPIManagerError.network(error: response.result.error!))
-        }
-        
-        // make sure we got JSON and it's an array
-        guard let jsonArray = response.result.value as? [[String: Any]] else {
-            print("didn't get array of gists object as JSON from API")
-            return .failure(GitHubAPIManagerError.objectSerialization(reason:
-                "Did not get JSON dictionary in response"))
-        }
-        
-        // check for "message" errors in the JSON because this API does that
-        if let jsonDictionary = response.result.value as? [String: Any],
-            let errorMessage = jsonDictionary["message"] as? String {
-            return .failure(GitHubAPIManagerError.apiProvidedError(reason: errorMessage))
-        }
-        
-        // turn JSON in to gists
-        var dSWeathers = [DSObservations]()
-        for item in jsonArray {
-            if let dSWeather = DSObservations(json: item) {
-                dSWeathers.append(dSWeather)
-            }
-        }
-        return .success(dSWeathers)
-    }
-    */
     
-  /*  func isAPIOnline(completionHandler: @escaping (Bool) -> Void) {
-        Alamofire.request(WeatherRouter.baseURLString)
+    func checkUnauthorized(urlResponse: HTTPURLResponse) -> (Error?) {
+        if (urlResponse.statusCode == 401) {
+            //self.OAuthToken = nil
+            return GitHubAPIManagerError.authLost(reason: "Not Logged In")
+        }
+        return nil
+    }
+    
+    func isAPIOnline(completionHandler: @escaping (Bool) -> Void) {
+        Alamofire.request(GistRouter.baseURLString)
             .validate(statusCode: 200 ..< 300)
             .response { response in
                 guard response.error == nil else {
@@ -149,7 +117,7 @@ class DSAPIManager {
                 }
                 completionHandler(true)
         }
-    }*/
+    }
     
     // MARK: - Pagination
     private func parseNextPageFromHeaders(response: HTTPURLResponse?) -> String? {
@@ -183,4 +151,4 @@ class DSAPIManager {
         }
         return nil
     }
-}
+}*/

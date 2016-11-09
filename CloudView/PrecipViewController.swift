@@ -12,13 +12,13 @@ import GooglePlaces
 
 class PrecipViewController: UIViewController, CLLocationManagerDelegate {
     
-    
     @IBOutlet weak var precipViewOne: UIView!
     @IBOutlet weak var precipViewTwo: UIView!
     @IBOutlet weak var precipViewThree: UIView!
     
     var placesClient: GMSPlacesClient?
     let locationManager = CLLocationManager()
+    var currentLocation: CLLocation!
     
     
     @IBAction func indexChanged(_ sender: UISegmentedControl) {
@@ -46,7 +46,6 @@ class PrecipViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,61 +57,30 @@ class PrecipViewController: UIViewController, CLLocationManagerDelegate {
         
         FetchAllData.getLatLon(viewOne: precipViewOne, viewTwo: precipViewTwo, viewThree: precipViewThree, placesClient: placesClient!)
         
-        /*placesClient?.currentPlace(callback: {
-            (placeLikelihoodList: GMSPlaceLikelihoodList?, error: Error?) -> Void in
-            if let error = error {
-                print("Pick Place error: \(error.localizedDescription)")
-                return
-            }
-            
-            
-            if let placeLikelihoodList = placeLikelihoodList {
-                if let place = placeLikelihoodList.likelihoods.first?.place {
-                    
-                    mainSettingsData.latitude = "\(place.coordinate.latitude)"
-                    mainSettingsData.longitude = "\(place.coordinate.longitude)"
-                    
-                    print(mainSettingsData.latitude)
-                    print(mainSettingsData.longitude)
-                }
-                
-            }
-            FetchAllData.precip(self.precipViewOne, viewTwo: self.precipViewTwo, viewThree: self.precipViewThree)
-        }) */
-
-        
-        //FetchAllData.precip(precipViewOne, viewTwo: precipViewTwo, viewThree: precipViewThree)
-        
         precipViewOne.layer.isHidden = true
         precipViewTwo.layer.isHidden = true
         precipViewThree.layer.isHidden = false
-        
-        
-        
-      /*  CallForLocations.requestLocationCategories(dateFor.stringOfNormalYearStart, endDate: dateFor.stringOfNormalYearEnd, dataSet: "GHCND", dataType: "PRCP")  { responseObject in
-            // use responseObject and error here
-            print(responseObject)
-           
-            
-            return
-        }*/
-        
-        /*CallForLocations.requestLocations(dateFor.stringOfNormalYearStart, endDate: dateFor.stringOfNormalYearEnd, dataSet: "GHCND", dataType: "PRCP", zipCode: "05401")  { responseObject in
-            // use responseObject and error here
-            print(responseObject)
-            
-            
-            return
-        }*/
-
-        
-        //UpdateView.drawChart(self.precipView, current: mainWeatherData.currentMonthPrecipArray, normal: mainWeatherData.normalMonthPrecipArray)
         
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
+    func locationAuthStatus() {
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            currentLocation = locationManager.location
+            Location.sharedInstance.latitude = currentLocation.coordinate.latitude
+            Location.sharedInstance.longitude = currentLocation.coordinate.longitude
+            /*currentWeather.downloadWeatherDetails {
+                self.downloadForecastData {
+                    self.updateMainUI()
+                }
+            }*/
+        } else {
+            locationManager.requestWhenInUseAuthorization()
+            locationAuthStatus()
+        }
+    }
 
 }

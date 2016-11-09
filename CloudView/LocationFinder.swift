@@ -32,20 +32,11 @@ class CallForLocations {
             "token": "qMbhulVTJqFjFMUdHrwmhbxVyIIeqmOs"
         ]
         
-        
         let parameters = [
             
             "limit": "100",
             "extent" : "\(mainSettingsData.topRightLat), \(mainSettingsData.topRightLon), \(mainSettingsData.bottomLeftLat), \(mainSettingsData.bottomLeftLon)"
-            //"datatypeid": dataType,
-            //"datasetid" : "GHCND",
-            //"startdate": startDate,
-            //"enddate" : endDate,
-            //"locationcategoryid" : "ST",
-            //"sortfield" : "name",
-            //"sortorder" : "asc",
-            //"locationcategoryid" : "ZIP:\(zipCode)"
-            //"datasetid" : dataSet,
+            
         ]
         
         
@@ -155,28 +146,17 @@ class CallForLocations {
                         
                         completionHandler(dict)
                         
-                        //currentYearDict = dict
-                        //mainWeatherData.currentYearPrecipArray = TransformArray.toSimple(dict)
-                        //mainWeatherData.currentMonthPrecipArray = TransformArray.toCurrentMonth(dict)
-                        //mainWeatherData.currentWeekPrecipArray = TransformArray.toCurrentWeek(dict)
-                        //mainWeatherData.currentPrecipLoaded = true
-                        //print(mainWeatherData.currentYearPrecipArray.count)
-                        //UpdateView.handlePrecipCompletion(view)
                     }
-                    
                     
                 case .failure(let error):
                     print(error)
                 }
                 
-                
-                
-                
         }
         
     }
     
-    private func nOAAStationFileArrayFromResponse(response: DataResponse<Any>) -> Result<[NOAAStationFile]> {
+    /*private func nOAAStationFileArrayFromResponse(response: DataResponse<Any>) -> Result<[NOAAStationFile]> {
         guard response.result.error == nil else {
             print(response.result.error!)
             return .failure(GitHubAPIManagerError.network(error: response.result.error!))
@@ -203,6 +183,6 @@ class CallForLocations {
             }
         }
         return .success(nOAAStationFiles)
-    }
+    }*/
 
 }

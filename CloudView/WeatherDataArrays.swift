@@ -142,88 +142,8 @@ var normalTMINLoaded = false
 
     }
     
-    
 }
 
 var mainWeatherData = WeatherDataArrays(currentYearPrecipArray: [], currentYearTemperatureMaxArray: [], currentYearTemperatureMinArray: [], normalPrecipArray: [], normalYearTemperatureMaxArray: [],normalYearTemperatureMinArray: [], currentMonthPrecipArray: [], currentMonthTemperatureMaxArray: [], currentMonthTemperatureMinArray: [], normalMonthPrecipArray: [], normalMonthTemperatureMaxArray: [],normalMonthTemperatureMinArray: [], currentWeekPrecipArray: [], currentWeekTemperatureMaxArray: [], currentWeekTemperatureMinArray: [], normalWeekPrecipArray: [], normalWeekTemperatureMaxArray: [],normalWeekTemperatureMinArray: [],currentYearPrecipDict: [:], currentYearTemperatureMaxDict: [:], currentYearTemperatureMinDict: [:], normalYearPrecipDict: [:], normalYearTemperatureMaxDict: [:], normalYearTemperatureMinDict: [:], normalYearPrecipCumulative: [], currentYearPrecipCumulative: [], normalYearDegreeDayCumulative: [], currentYearDegreeDayCumulative: [], currentPrecipLoaded: false, normalPrecipLoaded: false, currentTMAXLoaded: false, normalTMAXLoaded: false, currentTMINLoaded: false, normalTMINLoaded: false)
-
-
-/*
- 
- let today = NSDate()
- let gregorian: NSCalendar! = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
- 
- var blankDict:[NSDate : Float] = [:]
- var start = Date.lastYearStartMath(today)
- var end = Date.lastYearEndMath(today)
- var counter: Float = 1
- 
- let dateComponents = NSDateComponents()
- dateComponents.day = 1
- end = gregorian.dateByAddingComponents(dateComponents, toDate: end, options: NSCalendarOptions(rawValue: 0))!
- 
- repeat {
- 
- blankDict[start] = counter
- 
- // print(blankDict.count)
- // print(start)
- //print(blankDict[end])
- // print("end: \(end)")
- 
- counter += 0.1
- 
- // increment the date by 1 day
- let dateComponents = NSDateComponents()
- dateComponents.day = 1
- start = gregorian.dateByAddingComponents(dateComponents, toDate: start, options: NSCalendarOptions(rawValue: 0))!
- 
- 
- } while start != end
- 
- print(blankDict)
- 
- let sortedDict = blankDict.sort { $0.0.compare($1.0) == .OrderedAscending }
- 
- 
- var arr: [Float] = []
- for (_,value) in sortedDict {
- 
- arr.append(value)
- 
- }
- print(arr)
-
-var precipCalc:[NSDate : Float] = [:]
-var startMinusOne = Date.lastYearStartMath(today)
-
-
-// changes end date to Jan 1 of the next year so loop will complete all 365 values
-let endDateComponents = NSDateComponents()
-endDateComponents.day = 1
-end = gregorian.dateByAddingComponents(endDateComponents, toDate: end, options: NSCalendarOptions(rawValue: 0))!
-
-//changes startMinusOne date so that it can be used to add values cumulatively
-let startMinusOneDateComponents = NSDateComponents()
-startMinusOneDateComponents.day = -1
-startMinusOne = gregorian.dateByAddingComponents(startMinusOneDateComponents, toDate: startMinusOne, options: NSCalendarOptions(rawValue: 0))!
-
-repeat {
-    
-    precipCalc[start] = mainWeatherData.normalYearPrecipDict[start]! + (mainWeatherData.normalYearPrecipDict[startMinusOne] ?? 0.0)
-    
-    // print("end: \(precipCalc)")
-    
-    
-    // increment the date by 1 day
-    let dateComponents = NSDateComponents()
-    dateComponents.day = 1
-    start = gregorian.dateByAddingComponents(dateComponents, toDate: start, options: NSCalendarOptions(rawValue: 0))!
-    startMinusOne = gregorian.dateByAddingComponents(dateComponents, toDate: startMinusOne, options: NSCalendarOptions(rawValue: 0))!
-    
-} while start != end
- 
- */
-
 
 

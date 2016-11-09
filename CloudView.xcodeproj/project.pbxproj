@@ -24,9 +24,15 @@
 		E85F7BC71DBBEBA8007A5C55 /* ArrayCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BC61DBBEBA8007A5C55 /* ArrayCalculations.swift */; };
 		E85F7BC91DBBEDE2007A5C55 /* LocationFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BC81DBBEDE2007A5C55 /* LocationFinder.swift */; };
 		E85F7BCB1DBBEE6E007A5C55 /* NOAARequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BCA1DBBEE6E007A5C55 /* NOAARequests.swift */; };
+		E8975D941DD39D190033C4EC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8975D931DD39D190033C4EC /* Location.swift */; };
+		E8975D961DD3BB070033C4EC /* NOAADaily.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8975D951DD3BB070033C4EC /* NOAADaily.swift */; };
+		E8975D981DD3BB180033C4EC /* NOAANormal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8975D971DD3BB180033C4EC /* NOAANormal.swift */; };
+		E8975D9A1DD3CD600033C4EC /* NOAAPrecip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8975D991DD3CD600033C4EC /* NOAAPrecip.swift */; };
+		E8975D9C1DD3CD730033C4EC /* NOAATMax.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8975D9B1DD3CD730033C4EC /* NOAATMax.swift */; };
+		E8975D9E1DD3CD840033C4EC /* NOAATMin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8975D9D1DD3CD840033C4EC /* NOAATMin.swift */; };
 		E89AB31C1DCA35820087A2CE /* DSObservations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89AB31B1DCA35820087A2CE /* DSObservations.swift */; };
 		E89AB31E1DCA434A0087A2CE /* DSDaily.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89AB31D1DCA434A0087A2CE /* DSDaily.swift */; };
-		E89AB3201DCA5BD90087A2CE /* WeatherRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89AB31F1DCA5BD90087A2CE /* WeatherRouter.swift */; };
+		E89AB3201DCA5BD90087A2CE /* NOAARouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89AB31F1DCA5BD90087A2CE /* NOAARouter.swift */; };
 		E8C4418D1DCB73F8005B8007 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C4418C1DCB73F8005B8007 /* APIManager.swift */; };
 		F4197B724BAEDFE09977FC8E /* Pods_CloudView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74A38990F51C8DDCE8455E06 /* Pods_CloudView.framework */; };
 /* End PBXBuildFile section */
@@ -54,9 +60,15 @@
 		E85F7BC61DBBEBA8007A5C55 /* ArrayCalculations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayCalculations.swift; sourceTree = "<group>"; };
 		E85F7BC81DBBEDE2007A5C55 /* LocationFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationFinder.swift; sourceTree = "<group>"; };
 		E85F7BCA1DBBEE6E007A5C55 /* NOAARequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NOAARequests.swift; sourceTree = "<group>"; };
+		E8975D931DD39D190033C4EC /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		E8975D951DD3BB070033C4EC /* NOAADaily.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NOAADaily.swift; sourceTree = "<group>"; };
+		E8975D971DD3BB180033C4EC /* NOAANormal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NOAANormal.swift; sourceTree = "<group>"; };
+		E8975D991DD3CD600033C4EC /* NOAAPrecip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NOAAPrecip.swift; sourceTree = "<group>"; };
+		E8975D9B1DD3CD730033C4EC /* NOAATMax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NOAATMax.swift; sourceTree = "<group>"; };
+		E8975D9D1DD3CD840033C4EC /* NOAATMin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NOAATMin.swift; sourceTree = "<group>"; };
 		E89AB31B1DCA35820087A2CE /* DSObservations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSObservations.swift; sourceTree = "<group>"; };
 		E89AB31D1DCA434A0087A2CE /* DSDaily.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSDaily.swift; sourceTree = "<group>"; };
-		E89AB31F1DCA5BD90087A2CE /* WeatherRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherRouter.swift; sourceTree = "<group>"; };
+		E89AB31F1DCA5BD90087A2CE /* NOAARouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NOAARouter.swift; sourceTree = "<group>"; };
 		E8C4418C1DCB73F8005B8007 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,9 +131,14 @@
 			children = (
 				E85F7BB41DBBEB45007A5C55 /* WeatherDataArrays.swift */,
 				E85F7BBC1DBBEB6C007A5C55 /* SettingsDataArrays.swift */,
-				E89AB31D1DCA434A0087A2CE /* DSDaily.swift */,
 				E89AB31B1DCA35820087A2CE /* DSObservations.swift */,
+				E89AB31D1DCA434A0087A2CE /* DSDaily.swift */,
 				E8471BBE1DCD14AA007EF8E0 /* NOAAStationFile.swift */,
+				E8975D951DD3BB070033C4EC /* NOAADaily.swift */,
+				E8975D971DD3BB180033C4EC /* NOAANormal.swift */,
+				E8975D991DD3CD600033C4EC /* NOAAPrecip.swift */,
+				E8975D9B1DD3CD730033C4EC /* NOAATMax.swift */,
+				E8975D9D1DD3CD840033C4EC /* NOAATMin.swift */,
 			);
 			name = Files;
 			sourceTree = "<group>";
@@ -142,7 +159,7 @@
 			children = (
 				E85F7BC81DBBEDE2007A5C55 /* LocationFinder.swift */,
 				E85F7BC21DBBEB95007A5C55 /* FetchAllData.swift */,
-				E89AB31F1DCA5BD90087A2CE /* WeatherRouter.swift */,
+				E89AB31F1DCA5BD90087A2CE /* NOAARouter.swift */,
 				E8C4418C1DCB73F8005B8007 /* APIManager.swift */,
 				E85F7BCA1DBBEE6E007A5C55 /* NOAARequests.swift */,
 			);
@@ -153,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				E85F7BB61DBBEB53007A5C55 /* UpdateView.swift */,
+				E8975D931DD39D190033C4EC /* Location.swift */,
 				E85F7BC41DBBEB9B007A5C55 /* DateHandler.swift */,
 				E85F7BC61DBBEBA8007A5C55 /* ArrayCalculations.swift */,
 			);
@@ -292,12 +310,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8975D9E1DD3CD840033C4EC /* NOAATMin.swift in Sources */,
 				E85F7BC91DBBEDE2007A5C55 /* LocationFinder.swift in Sources */,
 				E85F7BC51DBBEB9B007A5C55 /* DateHandler.swift in Sources */,
 				E85F7BB91DBBEB5D007A5C55 /* TempViewController.swift in Sources */,
 				E85F7BCB1DBBEE6E007A5C55 /* NOAARequests.swift in Sources */,
+				E8975D961DD3BB070033C4EC /* NOAADaily.swift in Sources */,
 				E85F7BC11DBBEB7D007A5C55 /* LocationFinderViewController.swift in Sources */,
 				E85F7BB51DBBEB45007A5C55 /* WeatherDataArrays.swift in Sources */,
+				E8975D981DD3BB180033C4EC /* NOAANormal.swift in Sources */,
 				E85F7BBD1DBBEB6C007A5C55 /* SettingsDataArrays.swift in Sources */,
 				E89AB31E1DCA434A0087A2CE /* DSDaily.swift in Sources */,
 				E85F7BB71DBBEB53007A5C55 /* UpdateView.swift in Sources */,
@@ -306,10 +327,13 @@
 				E85F7BC31DBBEB95007A5C55 /* FetchAllData.swift in Sources */,
 				E8C4418D1DCB73F8005B8007 /* APIManager.swift in Sources */,
 				E85F7BBF1DBBEB71007A5C55 /* PrecipViewController.swift in Sources */,
+				E8975D941DD39D190033C4EC /* Location.swift in Sources */,
+				E8975D9C1DD3CD730033C4EC /* NOAATMax.swift in Sources */,
 				E89AB31C1DCA35820087A2CE /* DSObservations.swift in Sources */,
 				E8471BBF1DCD14AA007EF8E0 /* NOAAStationFile.swift in Sources */,
+				E8975D9A1DD3CD600033C4EC /* NOAAPrecip.swift in Sources */,
 				E85F7BA11DBBEAE0007A5C55 /* AppDelegate.swift in Sources */,
-				E89AB3201DCA5BD90087A2CE /* WeatherRouter.swift in Sources */,
+				E89AB3201DCA5BD90087A2CE /* NOAARouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

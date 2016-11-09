@@ -36,6 +36,7 @@ class FetchAllData {
                 }
                 
             }
+            
             FetchAllData.getStation(viewOne: viewOne, viewTwo: viewTwo, viewThree: viewThree)
         })
         
@@ -56,9 +57,9 @@ class FetchAllData {
 
         //let formatter = DateFormatter()
         //formatter.dateFormat = "yyyy-MM-dd"
-        var date = dateFor.currentWeekStart
+        //var date = dateFor.currentWeekStart
         
-        CallREST.requestWeatherFromNOAA(dateFor.stringOfCurrentYearStart, endDate: dateFor.stringOfCurrentYearEnd, dataSet: "GHCND", dataType: "PRCP")
+        CallREST.requestWeatherFromNOAA(NOAARouter.getCurrentYearPrecip())
         { responseObject in
             // use responseObject and error here
             //print(responseObject.count)
@@ -74,7 +75,7 @@ class FetchAllData {
         }
             
         
-        CallREST.requestWeatherFromNOAA(dateFor.stringOfNormalYearStart, endDate: dateFor.stringOfNormalYearEnd , dataSet: "NORMAL_DLY", dataType: "YTD-PRCP-NORMAL") { responseObject in
+        CallREST.requestWeatherFromNOAA(NOAARouter.getNormalYearPrecip()) { responseObject in
             // use responseObject and error here
             mainWeatherData.normalYearPrecipDict = responseObject
             mainWeatherData.normalYearPrecipArray = TransformArray.toSimple(responseObject)
@@ -89,31 +90,6 @@ class FetchAllData {
             return
         }
         
-        
-      /*  while date.compare(dateFor.currentWeekEnd) != ComparisonResult.orderedSame {
-            
-            
-            
-            
-           // aPIClient.getForecast(latitude: 44.4759, longitude: -73.2121, time: date)
-            
-            CallREST.requestWeatherFromDarkSky("\(date.timeIntervalSince1970)", latitude: mainSettingsData.latitude, longitude: mainSettingsData.longitude) { responseObject in
-               
-                print(responseObject)
-             }
-                
-            
-            
-            // increment the date by 1 day
-            let userCalendar = Calendar.current
-            var dateComponents = DateComponents()
-            dateComponents.day = 1
-            date = userCalendar.date(byAdding: dateComponents, to: date)!
-            
-        }
-
-        
-     */   
     }
     
     static func temp(_ viewOne: UIView, viewTwo: UIView, viewThree: UIView) {
@@ -122,7 +98,7 @@ class FetchAllData {
         formatter.dateFormat = "yyyy-MM-dd"
         
         
-        CallREST.requestWeatherFromNOAA(dateFor.stringOfCurrentYearStart, endDate: dateFor.stringOfCurrentYearEnd, dataSet: "GHCND", dataType: "TMAX") { responseObject in
+        CallREST.requestWeatherFromNOAA(NOAARouter.getCurrentYearTMax()) { responseObject in
             // use responseObject and error here
             mainWeatherData.currentYearTemperatureMaxDict = responseObject
             mainWeatherData.currentYearTemperatureMaxArray = TransformArray.toSimple(responseObject)
@@ -133,7 +109,7 @@ class FetchAllData {
             return
         }
  
-        CallREST.requestWeatherFromNOAA(dateFor.stringOfCurrentYearStart, endDate: dateFor.stringOfCurrentYearEnd, dataSet: "GHCND", dataType: "TMIN") { responseObject in
+        CallREST.requestWeatherFromNOAA(NOAARouter.getCurrentYearTMin()) { responseObject in
             // use responseObject and error here
             mainWeatherData.currentYearTemperatureMinDict = responseObject
             mainWeatherData.currentYearTemperatureMinArray = TransformArray.toSimple(responseObject)
@@ -145,7 +121,7 @@ class FetchAllData {
         }
  
  
-        CallREST.requestWeatherFromNOAA(dateFor.stringOfNormalYearStart, endDate: dateFor.stringOfNormalYearEnd, dataSet: "NORMAL_DLY", dataType: "DLY-TMAX-NORMAL") { responseObject in
+        CallREST.requestWeatherFromNOAA(NOAARouter.getNormalYearTMax()) { responseObject in
             // use responseObject and error here
             
             mainWeatherData.normalYearTemperatureMaxDict = responseObject
@@ -159,7 +135,7 @@ class FetchAllData {
             return
         }
         
-        CallREST.requestWeatherFromNOAA(dateFor.stringOfNormalYearStart, endDate: dateFor.stringOfNormalYearEnd, dataSet: "NORMAL_DLY", dataType: "DLY-TMIN-NORMAL") { responseObject in
+        CallREST.requestWeatherFromNOAA(NOAARouter.getNormalYearTMin()) { responseObject in
             // use responseObject and error here
             mainWeatherData.normalYearTemperatureMinDict = responseObject
             mainWeatherData.normalYearTemperatureMinArray = TransformArray.toSimple(responseObject)
@@ -173,7 +149,25 @@ class FetchAllData {
         }
         
     }
-    
-    
 
 }
+
+/*  while date.compare(dateFor.currentWeekEnd) != ComparisonResult.orderedSame {
+ 
+ 
+ // aPIClient.getForecast(latitude: 44.4759, longitude: -73.2121, time: date)
+ 
+ CallREST.requestWeatherFromDarkSky("\(date.timeIntervalSince1970)", latitude: mainSettingsData.latitude, longitude: mainSettingsData.longitude) { responseObject in
+ 
+ print(responseObject)
+ }
+ 
+ 
+ // increment the date by 1 day
+ let userCalendar = Calendar.current
+ var dateComponents = DateComponents()
+ dateComponents.day = 1
+ date = userCalendar.date(byAdding: dateComponents, to: date)!
+ 
+ }
+ */

@@ -14,7 +14,6 @@ class TempViewController: UIViewController {
     @IBOutlet weak var tempViewTwo: UIView!
     @IBOutlet weak var tempViewThree: UIView!
     
-    
     @IBAction func indexChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex
         {

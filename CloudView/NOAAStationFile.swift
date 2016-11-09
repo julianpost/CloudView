@@ -41,7 +41,6 @@ init?(aName: String?, aStationID: String?, aLat: String?, aLon: String?) {
         aCoder.encode(self.lat, forKey: "latitude")
         aCoder.encode(self.lon, forKey: "longitude")
         
-        
     }
     
     @objc required convenience init?(coder aDecoder: NSCoder) {

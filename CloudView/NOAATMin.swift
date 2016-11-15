@@ -14,7 +14,7 @@ class TMin: NSObject, NSCoding{
     
     required init?(json: [String: Any]) {
         
-        let dateFormatter = DSObservations.dateFormatter()
+        let dateFormatter = DSTopFile.dateFormatter()
         
         if let dateString = json["date"] as? String {
             self.date = dateFormatter.date(from: dateString)

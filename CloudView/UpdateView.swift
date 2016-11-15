@@ -120,8 +120,8 @@ class UpdateView {
         layerOne.lineWidth = 2.0
         layerTwo.lineWidth = 2.0
         
-        layerOne.strokeColor = UIColor.black.cgColor
-        layerTwo.strokeColor = UIColor.black.cgColor
+        layerOne.strokeColor = UIColor.blue.cgColor
+        layerTwo.strokeColor = UIColor.blue.cgColor
      
         layerOne.fillColor = nil
         layerTwo.fillColor = nil

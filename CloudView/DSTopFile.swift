@@ -1,5 +1,5 @@
 //
-//  DSObservations.swift
+//  DSTopFile.swift
 //  CloudView
 //
 //  Created by Julian Post on 11/2/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DSObservations: NSObject, NSCoding {
+class DSTopFile: NSObject, NSCoding {
     var daily: [DSDaily]?
     
     static let sharedDateFormatter = dateFormatter()

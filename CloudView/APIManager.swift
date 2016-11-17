@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-/*enum GitHubAPIManagerError: Error {
+enum APIManagerError: Error {
     case network(error: Error)
     case apiProvidedError(reason: String)
     case authCouldNot(reason: String)
@@ -17,10 +17,14 @@ import Alamofire
     case objectSerialization(reason: String)
 }
 
-class GitHubAPIManager {
-        // MARK: - API Calls
-    func printPublicGists() -> Void {
-        Alamofire.request(GistRouter.getPublic())
+class APIManager {
+    
+    
+    static let sharedInstance = APIManager()
+    
+    // MARK: - API Calls
+    func getWeather() -> Void {
+        Alamofire.request(NOAARouter.getNormalYearPrecip())
             .responseString { response in
                 if let receivedString = response.result.value {
                     print(receivedString)
@@ -28,86 +32,141 @@ class GitHubAPIManager {
         }
     }
     
-    func fetchPublicGists(pageToLoad: String?, completionHandler:
-        @escaping (Result<[Gist]>, String?) -> Void) {
-        if let urlString = pageToLoad {
-            fetchGists(GistRouter.getAtPath(urlString), completionHandler: completionHandler)
-        } else {
-            fetchGists(GistRouter.getPublic(), completionHandler: completionHandler)
+    func fetchNOAAStuff(completionHandler: @escaping (Result<Any>) -> Void) {
+        
+        var precipCurrent: [Date:Float]
+        var precipNormal: [[String:Any]]
+        var tMaxCurrent: [[String:Any]]
+        var tMaxNormal: [[String:Any]]
+        var tMinCurrent: [[String:Any]]
+        var tMinNormal: [[String:Any]]
+        
+        Alamofire.request(NOAARouter.getNormalYearPrecip())
+        .responseJSON { response in
+            
+            precipCurrent = nOAAArrayFromResponse(response: response)
+            
         }
     }
     
-    
-    
-    func fetchGists(_ urlRequest: URLRequestConvertible,
-                    completionHandler: @escaping (Result<[Gist]>, String?) -> Void) {
+    func fetchGists(_ urlRequest: URLRequestConvertible, completionHandler: @escaping (Result<[NOAAStationFile]>, String?) -> Void) {
         Alamofire.request(urlRequest)
             .responseJSON { response in
                 if let urlResponse = response.response,
                     let authError = self.checkUnauthorized(urlResponse: urlResponse) {
                     completionHandler(.failure(authError), nil)
                     return
-                }
+                    }
                 let result = self.gistArrayFromResponse(response: response)
                 let next = self.parseNextPageFromHeaders(response: response.response)
                 completionHandler(result, next)
-        }
-    }
-    
-        // MARK: - Helpers
-    func imageFrom(urlString: String,
-                   completionHandler: @escaping (UIImage?, Error?) -> Void) {
-        let _ = Alamofire.request(urlString)
-            .response { dataResponse in
-                // use the generic response serializer that returns Data
-                guard let data = dataResponse.data else {
-                    completionHandler(nil, dataResponse.error)
-                    return
                 }
-                let image = UIImage(data: data)
-                completionHandler(image, nil)
         }
-    }
     
-    private func gistArrayFromResponse(response: DataResponse<Any>) -> Result<[Gist]> {
+       // MARK: - Helpers
+   
+    
+    private func gistArrayFromResponse(response: DataResponse<Any>) -> Result<[NOAAStationFile]> {
         guard response.result.error == nil else {
             print(response.result.error!)
-            return .failure(GitHubAPIManagerError.network(error: response.result.error!))
+            return .failure(APIManagerError.network(error: response.result.error!))
         }
         
         // make sure we got JSON and it's an array
         guard let jsonArray = response.result.value as? [[String: Any]] else {
             print("didn't get array of gists object as JSON from API")
-            return .failure(GitHubAPIManagerError.objectSerialization(reason:
+            return .failure(APIManagerError.objectSerialization(reason:
                 "Did not get JSON dictionary in response"))
         }
         
         // check for "message" errors in the JSON because this API does that
         if let jsonDictionary = response.result.value as? [String: Any],
             let errorMessage = jsonDictionary["message"] as? String {
-            return .failure(GitHubAPIManagerError.apiProvidedError(reason: errorMessage))
+            return .failure(APIManagerError.apiProvidedError(reason: errorMessage))
         }
         
         // turn JSON in to gists
-        var gists = [Gist]()
+        var gists = [NOAAStationFile]()
         for item in jsonArray {
-            if let gist = Gist(json: item) {
+            if let gist = NOAAStationFile(json: item) {
                 gists.append(gist)
             }
         }
         return .success(gists)
     }
+        
+    private func nOAAArrayFromResponse(response: DataResponse<Any>) -> Result<[Date : Float]> {
+        guard response.result.error == nil else {
+            print(response.result.error!)
+            return .failure(APIManagerError.network(error: response.result.error!))
+        }
+        
+        // make sure we got JSON and it's an array
+        guard let jsonArray = response.result.value as? [String: Any] else {
+            print("didn't get array of gists object as JSON from API")
+            return .failure(APIManagerError.objectSerialization(reason:
+                "Did not get JSON dictionary in response"))
+        }
+        
+        // check for "message" errors in the JSON because this API does that
+        if let jsonDictionary = response.result.value as? [String: Any],
+            let errorMessage = jsonDictionary["message"] as? String {
+            return .failure(APIManagerError.apiProvidedError(reason: errorMessage))
+        }
+        
+        // turn JSON in to array
+        
+        var dict: [Date : Float]
+        
+            if let array = jsonArray["results"] as? [[String: Any]] {
+            
+                for i in array {
+                    if let date = i["date"], let value = i["value"] {
+                        let stringOfDate = "\(date)"
+                        let formattedDate = DateFunctions.stringToDate(stringOfDate)
+                        let stringOfValue = "\(value)"
+                        let floatOfValue = Float(stringOfValue)
+                        dict[formattedDate] = floatOfValue
+                }
+            }
+        }
+        return .success(dict)
+    }
+        
+    func nOAAInitialParse(json: [String: Any]) -> [Date : Float] {
+            
+        var dict: [Date : Float]
+        
+        if let array = json["results"] as? [[String: Any]] {
+                
+            for i in array {
+                if let date = i["date"], let value = i["value"] {
+                    let stringOfDate = "\(date)"
+                    let formattedDate = DateFunctions.stringToDate(stringOfDate)
+                    let stringOfValue = "\(value)"
+                    let floatOfValue = Float(stringOfValue)
+                    dict[formattedDate] = floatOfValue
+                        
+                        
+                }
+            }
+                
+                
+        }
+            
+        return dict
+    }
     
     func checkUnauthorized(urlResponse: HTTPURLResponse) -> (Error?) {
         if (urlResponse.statusCode == 401) {
             //self.OAuthToken = nil
-            return GitHubAPIManagerError.authLost(reason: "Not Logged In")
+            return APIManagerError.authLost(reason: "Not Logged In")
         }
         return nil
     }
     
     func isAPIOnline(completionHandler: @escaping (Bool) -> Void) {
-        Alamofire.request(GistRouter.baseURLString)
+        Alamofire.request(NOAARouter.baseURLString)
             .validate(statusCode: 200 ..< 300)
             .response { response in
                 guard response.error == nil else {
@@ -151,4 +210,4 @@ class GitHubAPIManager {
         }
         return nil
     }
-}*/
+}

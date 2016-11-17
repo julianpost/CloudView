@@ -16,6 +16,8 @@ class PrecipViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var precipViewTwo: UIView!
     @IBOutlet weak var precipViewThree: UIView!
     
+    var gists = [NOAAStationFile]()
+    
     var placesClient: GMSPlacesClient?
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation!
@@ -55,7 +57,8 @@ class PrecipViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         placesClient = GMSPlacesClient.shared()
         
-        FetchAllData.getLatLon(viewOne: precipViewOne, viewTwo: precipViewTwo, viewThree: precipViewThree, placesClient: placesClient!)
+        //FetchAllData.getLatLon(viewOne: precipViewOne, viewTwo: precipViewTwo, viewThree: precipViewThree, placesClient: placesClient!)
+        loadStuff()
         
         precipViewOne.layer.isHidden = true
         precipViewTwo.layer.isHidden = true
@@ -82,5 +85,23 @@ class PrecipViewController: UIViewController, CLLocationManagerDelegate {
             locationAuthStatus()
         }
     }
+    
+    func loadStuff () {
+        APIManager.sharedInstance.fetchPublicGists() {
+            result in
+            guard result.error == nil else {
+                self.handleLoadGistsError(result.error!)
+                return
+            }
+            if let fetchedGists = result.value {
+                self.gists = fetchedGists
+            print("YO WHAT UP \(self.gists)")}
+             }
+    }
+    
+    func handleLoadGistsError(_ error: Error) { // TODO: show error
+    }
+
+    
 
 }

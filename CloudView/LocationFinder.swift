@@ -42,19 +42,19 @@ class CallForLocations {
         
         Alamofire.request("https://www.ncdc.noaa.gov/cdo-web/api/v2/stations?", parameters: parameters, headers: headers)
             .validate(statusCode: 200..<300).responseJSON { (responseData) -> Void in
-                debugPrint(responseData)
-                print("blueee...42... \(responseData.data)")
+                //debugPrint(responseData)
+                //print("blueee...42... \(responseData.data)")
                 switch responseData.result {
                 case .success:
-                    print("Validation Successful \(startDate)")
+                    //print("Validation Successful \(startDate)")
                     let swiftyJsonVar = JSON(responseData.result.value!)
-                      print(swiftyJsonVar)
+                      //print(swiftyJsonVar)
                     
                     if let resData = swiftyJsonVar["results"].arrayObject {
-                        print(resData)
+                        //print(resData)
                         results = resData as! [[String:AnyObject]]
                         //  print(arrayVar)
-                        print(results)
+                        //print(results)
                         
                         var stationFiles = [NOAAStationFile]()
                         for item in results {
@@ -64,14 +64,14 @@ class CallForLocations {
                         }
                         mainSettingsData.stationFile = stationFiles
                         for i in stationFiles {
-                            print("\(i.name) has id \(i.stationID)")
+                            //print("\(i.name) has id \(i.stationID)")
                         }
                         
                         for i in results {
                             if let name = i["name"], let stationID = i["id"] {
                                 let stringOfName = "\(name)"
                                 let stringOfStationID = "\(stationID)"
-                                print(stringOfName)
+                                //print(stringOfName)
                                 //array.append(stringOfName)
                                 dict[stringOfName] = stringOfStationID
                                 
@@ -124,16 +124,16 @@ class CallForLocations {
         
         Alamofire.request("https://www.ncdc.noaa.gov/cdo-web/api/v2/locationcategories?datasetid=\(dataSet)", parameters: parameters, headers: headers)
             .validate(statusCode: 200..<300).responseJSON { (responseData) -> Void in
-                debugPrint(responseData)
+                //debugPrint(responseData)
                 switch responseData.result {
                 case .success:
-                    print("Validation Successful \(startDate)")
+                    //print("Validation Successful \(startDate)")
                     let swiftyJsonVar = JSON(responseData.result.value!)
                     //  print(swiftyJsonVar)
                     
                     if let resData = swiftyJsonVar["results"].arrayObject {
                         array = resData as! [[String:AnyObject]]
-                          print(array)
+                          //print(array)
                         
                         for i in array {
                             if let name = i["name"], let value = i["id"] {

@@ -59,6 +59,8 @@ class FetchAllData {
         //formatter.dateFormat = "yyyy-MM-dd"
         //var date = dateFor.currentWeekStart
         
+        
+        
         CallREST.requestWeatherFromNOAA(NOAARouter.getCurrentYearPrecip())
         { responseObject in
             // use responseObject and error here

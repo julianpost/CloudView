@@ -18,7 +18,7 @@ import Foundation
 import Alamofire
 
 enum NOAARouter: URLRequestConvertible {
-    static let baseURLString = "https://www.ncdc.noaa.gov/cdo-web/api/v2/data?"
+    static let baseURLString = "https://www.ncdc.noaa.gov/cdo-web/api/v2?"
     
     case getCurrentYearPrecip()
     case getNormalYearPrecip()
@@ -38,18 +38,8 @@ enum NOAARouter: URLRequestConvertible {
         let url: URL = {
             let relativePath: String
             switch self {
-            case .getCurrentYearPrecip:
-                relativePath = "datasetid=GHCND&datatypeid=PRCP&stationid=\(mainSettingsData.currentStation)&startdate=\(dateFor.stringOfCurrentYearStart)&enddate=\(dateFor.stringOfCurrentYearEnd)&units=standard&limit=365"
-            case .getNormalYearPrecip():
-                relativePath = "datasetid=NORMAL_DLY&datatypeid=YTD-PRCP-NORMAL&stationid=\(mainSettingsData.currentStation)&startdate=\(dateFor.stringOfNormalYearStart)&enddate=\(dateFor.stringOfNormalYearEnd)&units=standard&limit=365"
-            case .getCurrentYearTMax():
-                relativePath = "datasetid=GHCND&datatypeid=TMAX&stationid=\(mainSettingsData.currentStation)&startdate=\(dateFor.stringOfCurrentYearStart)&enddate=\(dateFor.stringOfCurrentYearEnd)&units=standard&limit=365"
-            case .getNormalYearTMax():
-                relativePath = "datasetid=NORMAL_DLY&datatypeid=DLY-TMAX-NORMAL&stationid=\(mainSettingsData.currentStation)&startdate=\(dateFor.stringOfNormalYearStart)&enddate=\(dateFor.stringOfNormalYearEnd)&units=standard&limit=365"
-            case .getCurrentYearTMin():
-                relativePath = "datasetid=GHCND&datatypeid=TMIN&stationid=\(mainSettingsData.currentStation)&startdate=\(dateFor.stringOfCurrentYearStart)&enddate=\(dateFor.stringOfCurrentYearEnd)&units=standard&limit=365"
-            case .getNormalYearTMin():
-                relativePath = "datasetid=NORMAL_DLY&datatypeid=DLY-TMIN-NORMAL&stationid=\(mainSettingsData.currentStation)&startdate=\(dateFor.stringOfNormalYearStart)&enddate=\(dateFor.stringOfNormalYearEnd)&units=standard&limit=365"
+            case .getCurrentYearPrecip, .getNormalYearPrecip, .getCurrentYearTMax, .getNormalYearTMax, .getCurrentYearTMin, .getNormalYearTMin:
+                relativePath = "data"
             }
             
             var url = URL(string: NOAARouter.baseURLString)!
@@ -57,22 +47,77 @@ enum NOAARouter: URLRequestConvertible {
             return url
         }()
         
-        let params: ([String: Any]?) = {
+        let params: ([String: Any]) = {
             switch self {
-            case .getCurrentYearPrecip, .getNormalYearPrecip, .getCurrentYearTMax, .getNormalYearTMax, .getCurrentYearTMin, .getNormalYearTMin:
-                return nil
+            case .getCurrentYearPrecip:
+                return ([
+                "datasetid" : "GHCND",
+                "datatypeid" : "PRCP",
+                "stationid" : mainSettingsData.currentStation,
+                "startdate" : dateFor.stringOfCurrentYearStart,
+                "enddate" : dateFor.stringOfCurrentYearEnd,
+                "units" : "standard",
+                "limit" : "365"
+                ])
+            case .getNormalYearPrecip():
+                return ([
+                "datasetid" : "NORMAL_DLY",
+                "datatypeid" : "YTD-PRCP-NORMAL",
+                "stationid" : mainSettingsData.currentStation,
+                "startdate" : dateFor.stringOfNormalYearStart,
+                "enddate" : dateFor.stringOfNormalYearEnd,
+                "units" : "standard",
+                "limit" : "365"
+                ])
+            case .getCurrentYearTMax():
+                return ([
+                    "datasetid" : "GHCND",
+                    "datatypeid" : "TMAX",
+                    "stationid" : mainSettingsData.currentStation,
+                    "startdate" : dateFor.stringOfCurrentYearStart,
+                    "enddate" : dateFor.stringOfCurrentYearEnd,
+                    "units" : "standard",
+                    "limit" : "365"
+                ])
+            case .getNormalYearTMax():
+                return ([
+                    "datasetid" : "NORMAL_DLY",
+                    "datatypeid" : "YTD-TMAX-NORMAL",
+                    "stationid" : mainSettingsData.currentStation,
+                    "startdate" : dateFor.stringOfNormalYearStart,
+                    "enddate" : dateFor.stringOfNormalYearEnd,
+                    "units" : "standard",
+                    "limit" : "365"
+                ])
+            case .getCurrentYearTMin():
+                return ([
+                    "datasetid" : "GHCND",
+                    "datatypeid" : "TMIN",
+                    "stationid" : mainSettingsData.currentStation,
+                    "startdate" : dateFor.stringOfCurrentYearStart,
+                    "enddate" : dateFor.stringOfCurrentYearEnd,
+                    "units" : "standard",
+                    "limit" : "365"
+                ])
+            case .getNormalYearTMin():
+                return ([
+                    "datasetid" : "NORMAL_DLY",
+                    "datatypeid" : "YTD-TMIN-NORMAL",
+                    "stationid" : mainSettingsData.currentStation,
+                    "startdate" : dateFor.stringOfNormalYearStart,
+                    "enddate" : dateFor.stringOfNormalYearEnd,
+                    "units" : "standard",
+                    "limit" : "365"
+                ])
             }
         }()
         
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method.rawValue
         
-        /*// Set OAuth token if we have one
-        if let token = GitHubAPIManager.sharedInstance.OAuthToken {
-            urlRequest.setValue("token \(token)", forHTTPHeaderField: "Authorization")
-        }*/
+        urlRequest.setValue("qMbhulVTJqFjFMUdHrwmhbxVyIIeqmOs", forHTTPHeaderField: "Token")
         
-        let encoding = JSONEncoding.default
+        let encoding = URLEncoding.default
         return try encoding.encode(urlRequest, with: params)
     }
 }

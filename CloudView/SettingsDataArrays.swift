@@ -23,7 +23,7 @@ struct SettingsDataArrays {
         self.stationsArray = [:]
         self.stationFile = ""
         self.extent = ""
-        self.currentStation = ""
+        self.currentStation = "GHCND:USW00014742"
         self.minTempOne = 52
         self.maxTempOne = 86
         self.minTempTwo = 32

@@ -58,7 +58,13 @@ class PrecipViewController: UIViewController, CLLocationManagerDelegate {
         placesClient = GMSPlacesClient.shared()
         
         //FetchAllData.getLatLon(viewOne: precipViewOne, viewTwo: precipViewTwo, viewThree: precipViewThree, placesClient: placesClient!)
-        loadStuff()
+        
+        APIManager.sharedInstance.fetchNOAAStuff() { result in
+            guard result.error == nil else {
+            self.handleLoadGistsError(result.error!)
+            return
+            }
+        }
         
         precipViewOne.layer.isHidden = true
         precipViewTwo.layer.isHidden = true
@@ -86,7 +92,7 @@ class PrecipViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func loadStuff () {
+   /* func loadStuff () {
         APIManager.sharedInstance.fetchPublicGists() {
             result in
             guard result.error == nil else {
@@ -97,7 +103,7 @@ class PrecipViewController: UIViewController, CLLocationManagerDelegate {
                 self.gists = fetchedGists
             print("YO WHAT UP \(self.gists)")}
              }
-    }
+    }*/
     
     func handleLoadGistsError(_ error: Error) { // TODO: show error
     }

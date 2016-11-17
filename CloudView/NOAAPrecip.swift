@@ -10,7 +10,7 @@ import Foundation
 
 func NOAAInitialParse(json: [String: Any]) -> [Date : Float] {
     
-    var dict: [Date : Float]
+    var dict: [Date : Float] = [:]
     
     if let array = json["results"] as? [[String: Any]] {
             

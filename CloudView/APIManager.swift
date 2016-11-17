@@ -34,19 +34,81 @@ class APIManager {
     
     func fetchNOAAStuff(completionHandler: @escaping (Result<Any>) -> Void) {
         
-        var precipCurrent: [Date:Float]
-        var precipNormal: [[String:Any]]
-        var tMaxCurrent: [[String:Any]]
-        var tMaxNormal: [[String:Any]]
-        var tMinCurrent: [[String:Any]]
-        var tMinNormal: [[String:Any]]
+        var currentYearPrecip: [Date:Float] = [:]
+        var normalYearPrecip: [Date:Float] = [:]
+        var currentYearTMax: [Date:Float] = [:]
+        var normalYearTMax: [Date:Float] = [:]
+        var currentYearTMin: [Date:Float] = [:]
+        var normalYearTMin: [Date:Float] = [:]
+        
+        var currentYearPrecipBool = false
+        var normalYearPrecipBool = false
+        var currentYearTMaxBool = false
+        var normalYearTMaxBool = false
+        var currentYearTMinBool = false
+        var normalYearTMinBool = false
+        
+        func initWeatherData() {
+            if currentYearPrecipBool && normalYearPrecipBool && currentYearTMaxBool && normalYearTMaxBool && currentYearTMinBool && normalYearTMinBool {
+                //initialize weatherDataArrays
+                print("all done")
+            }
+        }
+        
+        Alamofire.request(NOAARouter.getCurrentYearPrecip())
+        .responseJSON { response in
+                if let values = self.nOAAArrayFromResponse(response: response).value {
+                    currentYearPrecip = values
+                    currentYearPrecipBool = true
+                    initWeatherData()
+                }
+        }
         
         Alamofire.request(NOAARouter.getNormalYearPrecip())
-        .responseJSON { response in
-            
-            precipCurrent = nOAAArrayFromResponse(response: response)
-            
+            .responseJSON { response in
+                if let values = self.nOAAArrayFromResponse(response: response).value {
+                    normalYearPrecip = values
+                    normalYearPrecipBool = true
+                    initWeatherData()
+                }
         }
+        
+        Alamofire.request(NOAARouter.getCurrentYearTMax())
+            .responseJSON { response in
+                if let values = self.nOAAArrayFromResponse(response: response).value {
+                    currentYearTMax = values
+                    currentYearTMaxBool = true
+                    initWeatherData()
+                }
+        }
+        
+        Alamofire.request(NOAARouter.getNormalYearTMax())
+            .responseJSON { response in
+                if let values = self.nOAAArrayFromResponse(response: response).value {
+                    normalYearTMax = values
+                    normalYearTMaxBool = true
+                    initWeatherData()
+                }
+        }
+        Alamofire.request(NOAARouter.getCurrentYearTMin())
+            .responseJSON { response in
+                
+                if let values = self.nOAAArrayFromResponse(response: response).value {
+                    currentYearTMin = values
+                    currentYearTMinBool = true
+                    initWeatherData()
+                }
+        }
+        Alamofire.request(NOAARouter.getNormalYearTMin())
+            .responseJSON { response in
+        
+                if let values = self.nOAAArrayFromResponse(response: response).value {
+                    normalYearTMin = values
+                    normalYearTMinBool = true
+                    initWeatherData()
+                }
+        }
+        
     }
     
     func fetchGists(_ urlRequest: URLRequestConvertible, completionHandler: @escaping (Result<[NOAAStationFile]>, String?) -> Void) {
@@ -116,7 +178,7 @@ class APIManager {
         
         // turn JSON in to array
         
-        var dict: [Date : Float]
+        var dict: [Date : Float] = [:]
         
             if let array = jsonArray["results"] as? [[String: Any]] {
             
@@ -135,7 +197,7 @@ class APIManager {
         
     func nOAAInitialParse(json: [String: Any]) -> [Date : Float] {
             
-        var dict: [Date : Float]
+        var dict: [Date : Float] = [:]
         
         if let array = json["results"] as? [[String: Any]] {
                 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class NOAADaily: NSObject, NSCoding{
+/*class NOAADaily: NSObject, NSCoding{
     var currentYearPrecipArray, currentYearTemperatureMaxArray, currentYearTemperatureMinArray, normalYearPrecipArray, normalYearTemperatureMaxArray,normalYearTemperatureMinArray: [Float]
     
     var currentMonthPrecipArray, currentMonthTemperatureMaxArray, currentMonthTemperatureMinArray, normalMonthPrecipArray, normalMonthTemperatureMaxArray,normalMonthTemperatureMinArray: [Float]
@@ -159,7 +159,7 @@ class NOAADaily: NSObject, NSCoding{
     
 }
 
-var mainWeatherData = WeatherDataArrays(currentYearPrecipArray: [], currentYearTemperatureMaxArray: [], currentYearTemperatureMinArray: [], normalPrecipArray: [], normalYearTemperatureMaxArray: [],normalYearTemperatureMinArray: [], currentMonthPrecipArray: [], currentMonthTemperatureMaxArray: [], currentMonthTemperatureMinArray: [], normalMonthPrecipArray: [], normalMonthTemperatureMaxArray: [],normalMonthTemperatureMinArray: [], currentWeekPrecipArray: [], currentWeekTemperatureMaxArray: [], currentWeekTemperatureMinArray: [], normalWeekPrecipArray: [], normalWeekTemperatureMaxArray: [],normalWeekTemperatureMinArray: [],currentYearPrecipDict: [:], currentYearTemperatureMaxDict: [:], currentYearTemperatureMinDict: [:], normalYearPrecipDict: [:], normalYearTemperatureMaxDict: [:], normalYearTemperatureMinDict: [:], normalYearPrecipCumulative: [], currentYearPrecipCumulative: [], normalYearDegreeDayCumulative: [], currentYearDegreeDayCumulative: [], currentPrecipLoaded: false, normalPrecipLoaded: false, currentTMAXLoaded: false, normalTMAXLoaded: false, currentTMINLoaded: false, normalTMINLoaded: false)
+var mainBalloonData = WeatherDataArrays(currentYearPrecipArray: [], currentYearTemperatureMaxArray: [], currentYearTemperatureMinArray: [], normalPrecipArray: [], normalYearTemperatureMaxArray: [],normalYearTemperatureMinArray: [], currentMonthPrecipArray: [], currentMonthTemperatureMaxArray: [], currentMonthTemperatureMinArray: [], normalMonthPrecipArray: [], normalMonthTemperatureMaxArray: [],normalMonthTemperatureMinArray: [], currentWeekPrecipArray: [], currentWeekTemperatureMaxArray: [], currentWeekTemperatureMinArray: [], normalWeekPrecipArray: [], normalWeekTemperatureMaxArray: [],normalWeekTemperatureMinArray: [],currentYearPrecipDict: [:], currentYearTemperatureMaxDict: [:], currentYearTemperatureMinDict: [:], normalYearPrecipDict: [:], normalYearTemperatureMaxDict: [:], normalYearTemperatureMinDict: [:], normalYearPrecipCumulative: [], currentYearPrecipCumulative: [], normalYearDegreeDayCumulative: [], currentYearDegreeDayCumulative: [], currentPrecipLoaded: false, normalPrecipLoaded: false, currentTMAXLoaded: false, normalTMAXLoaded: false, currentTMINLoaded: false, normalTMINLoaded: false)
 
     
 }
@@ -199,4 +199,4 @@ var mainWeatherData = WeatherDataArrays(currentYearPrecipArray: [], currentYearT
         // use the existing init function
         self.init(aPrecip: precip, aTMax: tMax, aTMin: tMin)
     }
-}*/
+}*/*/

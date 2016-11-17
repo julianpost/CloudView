@@ -157,10 +157,10 @@
 		E8A105611DCFD8910000450C /* Web Requests */ = {
 			isa = PBXGroup;
 			children = (
-				E85F7BC81DBBEDE2007A5C55 /* LocationFinder.swift */,
-				E85F7BC21DBBEB95007A5C55 /* FetchAllData.swift */,
 				E89AB31F1DCA5BD90087A2CE /* NOAARouter.swift */,
 				E8C4418C1DCB73F8005B8007 /* APIManager.swift */,
+				E85F7BC81DBBEDE2007A5C55 /* LocationFinder.swift */,
+				E85F7BC21DBBEB95007A5C55 /* FetchAllData.swift */,
 				E85F7BCA1DBBEE6E007A5C55 /* NOAARequests.swift */,
 			);
 			name = "Web Requests";

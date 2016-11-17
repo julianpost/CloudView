@@ -59,10 +59,17 @@ class PrecipViewController: UIViewController, CLLocationManagerDelegate {
         
         //FetchAllData.getLatLon(viewOne: precipViewOne, viewTwo: precipViewTwo, viewThree: precipViewThree, placesClient: placesClient!)
         
-        APIManager.sharedInstance.fetchNOAAStuff() { result in
+        APIManager.sharedInstance.fetchPrecip() { result in
             guard result.error == nil else {
             self.handleLoadGistsError(result.error!)
             return
+            }
+        }
+        
+        APIManager.sharedInstance.fetchTemp() { result in
+            guard result.error == nil else {
+                self.handleLoadGistsError(result.error!)
+                return
             }
         }
         

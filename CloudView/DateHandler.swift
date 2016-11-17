@@ -246,7 +246,7 @@ class DateFunctions {
     static func normalWeekEndMath(_ todaysDate: Date) -> Date {
         
         let userCalendar = Calendar.current
-        
+
         let today = Calendar.current.startOfDay(for: todaysDate)
         
         let requestedDateComponents: NSCalendar.Unit = [.year, .month, .day]
@@ -258,15 +258,9 @@ class DateFunctions {
         
         return userCalendar.date(from: todaysDateComponents)!
     }
-
-
-
-
 }
+
 class DateFor {
-
-
-    
     
     var currentYearStart, currentYearEnd, currentMonthStart, currentMonthEnd, currentWeekStart, currentWeekEnd, normalYearStart, normalYearEnd, normalMonthStart, normalMonthEnd, normalWeekStart, normalWeekEnd: Date
     var stringOfCurrentYearStart, stringOfCurrentYearEnd, stringOfCurrentMonthStart, stringOfCurrentMonthEnd, stringOfCurrentWeekStart, stringOfCurrentWeekEnd, stringOfNormalYearStart, stringOfNormalYearEnd, stringOfNormalMonthStart, stringOfNormalMonthEnd, stringOfNormalWeekStart, stringOfNormalWeekEnd: String
@@ -303,11 +297,7 @@ class DateFor {
         self.stringOfNormalMonthEnd = formatter.string(from: DateFunctions.normalMonthEndMath(todayGlobal))
         self.stringOfNormalWeekStart = formatter.string(from: DateFunctions.normalWeekStartMath(todayGlobal))
         self.stringOfNormalWeekEnd = formatter.string(from: DateFunctions.normalWeekEndMath(todayGlobal))
-        
-    
-
     }
-
 }
 
 var dateFor = DateFor(currentYearStart: Date(), currentYearEnd: Date(), currentMonthStart: Date(), currentMonthEnd: Date(), currentWeekStart: Date(), currentWeekEnd: Date(), normalYearStart: Date(), normalYearEnd: Date(), normalMonthStart: Date(), normalMonthEnd: Date(), normalWeekStart: Date(), normalWeekEnd: Date(), stringOfCurrentYearStart: "", stringOfCurrentYearEnd: "", stringOfCurrentMonthStart: "", stringOfCurrentMonthEnd: "", stringOfCurrentWeekStart: "", stringOfCurrentWeekEnd: "", stringOfNormalYearStart: "", stringOfNormalYearEnd: "", stringOfNormalMonthStart: "", stringOfNormalMonthEnd: "", stringOfNormalWeekStart: "", stringOfNormalWeekEnd: "")

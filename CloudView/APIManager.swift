@@ -32,26 +32,18 @@ class APIManager {
         }
     }
     
-    func fetchNOAAStuff(completionHandler: @escaping (Result<Any>) -> Void) {
+    func fetchPrecip(completionHandler: @escaping (Result<Any>) -> Void) {
         
         var currentYearPrecip: [Date:Float] = [:]
         var normalYearPrecip: [Date:Float] = [:]
-        var currentYearTMax: [Date:Float] = [:]
-        var normalYearTMax: [Date:Float] = [:]
-        var currentYearTMin: [Date:Float] = [:]
-        var normalYearTMin: [Date:Float] = [:]
         
         var currentYearPrecipBool = false
         var normalYearPrecipBool = false
-        var currentYearTMaxBool = false
-        var normalYearTMaxBool = false
-        var currentYearTMinBool = false
-        var normalYearTMinBool = false
         
         func initWeatherData() {
-            if currentYearPrecipBool && normalYearPrecipBool && currentYearTMaxBool && normalYearTMaxBool && currentYearTMinBool && normalYearTMinBool {
+            if currentYearPrecipBool && normalYearPrecipBool {
                 //initialize weatherDataArrays
-                print("all done")
+                print("precip all done")
             }
         }
         
@@ -71,6 +63,26 @@ class APIManager {
                     normalYearPrecipBool = true
                     initWeatherData()
                 }
+        }
+    }
+    
+    func fetchTemp(completionHandler: @escaping (Result<Any>) -> Void) {
+        
+        var currentYearTMax: [Date:Float] = [:]
+        var normalYearTMax: [Date:Float] = [:]
+        var currentYearTMin: [Date:Float] = [:]
+        var normalYearTMin: [Date:Float] = [:]
+        
+        var currentYearTMaxBool = false
+        var normalYearTMaxBool = false
+        var currentYearTMinBool = false
+        var normalYearTMinBool = false
+        
+        func initWeatherData() {
+            if currentYearTMaxBool && normalYearTMaxBool && currentYearTMinBool && normalYearTMinBool {
+                //initialize weatherDataArrays
+                print("temp all done")
+            }
         }
         
         Alamofire.request(NOAARouter.getCurrentYearTMax())
@@ -101,7 +113,7 @@ class APIManager {
         }
         Alamofire.request(NOAARouter.getNormalYearTMin())
             .responseJSON { response in
-        
+                
                 if let values = self.nOAAArrayFromResponse(response: response).value {
                     normalYearTMin = values
                     normalYearTMinBool = true

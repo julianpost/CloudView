@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E84330801DDE0E9000452583 /* DarkSkyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E843307F1DDE0E9000452583 /* DarkSkyRouter.swift */; };
 		E8471BBF1DCD14AA007EF8E0 /* NOAAStationFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8471BBE1DCD14AA007EF8E0 /* NOAAStationFile.swift */; };
 		E85F7BA11DBBEAE0007A5C55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BA01DBBEAE0007A5C55 /* AppDelegate.swift */; };
 		E85F7BA81DBBEAE0007A5C55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E85F7BA71DBBEAE0007A5C55 /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 		18DC5E18C218C8A1B980AD0D /* Pods-CloudView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloudView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CloudView/Pods-CloudView.debug.xcconfig"; sourceTree = "<group>"; };
 		57D06E6E78697FA393437BBA /* Pods-CloudView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloudView.release.xcconfig"; path = "Pods/Target Support Files/Pods-CloudView/Pods-CloudView.release.xcconfig"; sourceTree = "<group>"; };
 		74A38990F51C8DDCE8455E06 /* Pods_CloudView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CloudView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E843307F1DDE0E9000452583 /* DarkSkyRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarkSkyRouter.swift; sourceTree = "<group>"; };
 		E8471BBE1DCD14AA007EF8E0 /* NOAAStationFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NOAAStationFile.swift; sourceTree = "<group>"; };
 		E85F7B9D1DBBEAE0007A5C55 /* CloudView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E85F7BA01DBBEAE0007A5C55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				E89AB31F1DCA5BD90087A2CE /* NOAARouter.swift */,
+				E843307F1DDE0E9000452583 /* DarkSkyRouter.swift */,
 				E8C4418C1DCB73F8005B8007 /* APIManager.swift */,
 				E85F7BC81DBBEDE2007A5C55 /* LocationFinder.swift */,
 				E85F7BC21DBBEB95007A5C55 /* FetchAllData.swift */,
@@ -310,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E84330801DDE0E9000452583 /* DarkSkyRouter.swift in Sources */,
 				E8975D9E1DD3CD840033C4EC /* NOAATMin.swift in Sources */,
 				E85F7BC91DBBEDE2007A5C55 /* LocationFinder.swift in Sources */,
 				E85F7BC51DBBEB9B007A5C55 /* DateHandler.swift in Sources */,

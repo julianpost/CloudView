@@ -49,7 +49,11 @@ enum DarkSkyRouter: URLRequestConvertible {
         let params: ([String: Any]?) = {
             switch self {
             case .getCurrentYearPrecip, .getNormalYearPrecip, .getCurrentYearTMax, .getNormalYearTMax, .getCurrentYearTMin, .getNormalYearTMin, .completeCurrentYearPrecip, .completeNormalYearPrecip, .completeCurrentYearTMax, .completeNormalYearTMax, .completeCurrentYearTMin, .completeNormalYearTMin:
-                return nil
+                return ([
+                    "exclude" : "currently,minutely,hourly,alerts,flags",
+                    "units" : "us",
+                    "lang" : "en"
+                    ])
             }
         }()
         

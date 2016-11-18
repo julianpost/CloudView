@@ -43,6 +43,8 @@ class APIManager {
         func initWeatherData() {
             if currentYearPrecipBool && normalYearPrecipBool {
                 //initialize weatherDataArrays
+                let precip = NOAAPrecipArrays(fromCurrentYearPrecip: currentYearPrecip, fromNormalYearPrecip: normalYearPrecip)
+                print(precip.currentYearPrecipArray)
                 print("precip all done")
             }
         }
@@ -81,6 +83,8 @@ class APIManager {
         func initWeatherData() {
             if currentYearTMaxBool && normalYearTMaxBool && currentYearTMinBool && normalYearTMinBool {
                 //initialize weatherDataArrays
+                let temp = NOAATempArrays(fromCurrentYearTMax: currentYearTMax, fromNormalYearTMax: normalYearTMax, fromCurrentYearTemperatureMin: currentYearTMin, fromNormalYearTemperatureMin: normalYearTMin)
+                print(temp.currentYearTemperatureMinArray)
                 print("temp all done")
             }
         }

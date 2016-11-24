@@ -12,6 +12,8 @@ class NOAATempArrays {
     
     var currentYearTemperatureMaxArray, currentYearTemperatureMinArray, normalYearTemperatureMaxArray,normalYearTemperatureMinArray, currentMonthTemperatureMaxArray, currentMonthTemperatureMinArray, normalMonthTemperatureMaxArray,normalMonthTemperatureMinArray, currentWeekTemperatureMaxArray, currentWeekTemperatureMinArray, normalWeekTemperatureMaxArray,normalWeekTemperatureMinArray: [Float]
     
+    //var currentYearDegreeDayOneCumulative, normalYearDegreeDayOneCumulative, currentYearDegreeDayTwoCumulative, normalYearDegreeDayTwoCumulative, currentYearDegreeDayThreeCumulative, normalYearDegreeDayThreeCumulative: [Float]
+    
     /*var normalYearPrecipCumulative, currentYearPrecipCumulative, normalYearDegreeDayOneCumulative, currentYearDegreeDayOneCumulative, normalYearDegreeDayTwoCumulative, currentYearDegreeDayTwoCumulative, normalYearDegreeDayThreeCumulative, currentYearDegreeDayThreeCumulative: [Float]*/
     
     init(fromCurrentYearTMax currentYearTemperatureMaxDict: [Date : Float], fromNormalYearTMax normalYearTemperatureMaxDict: [Date : Float], fromCurrentYearTemperatureMin currentYearTemperatureMinDict: [Date : Float], fromNormalYearTemperatureMin normalYearTemperatureMinDict: [Date : Float]) {
@@ -31,5 +33,13 @@ class NOAATempArrays {
         normalYearTemperatureMinArray = TransformArray.toSimple(normalYearTemperatureMinDict)
         normalMonthTemperatureMinArray = TransformArray.toNormalMonth(normalYearTemperatureMinDict)
         normalWeekTemperatureMinArray = TransformArray.toNormalWeek(normalYearTemperatureMinDict)
+        
+        /*currentYearDegreeDayOneCumulative
+        normalYearDegreeDayOneCumulative
+        currentYearDegreeDayTwoCumulative
+        normalYearDegreeDayTwoCumulative
+        currentYearDegreeDayThreeCumulative
+        normalYearDegreeDayThreeCumulative*/
+        
     }
 }

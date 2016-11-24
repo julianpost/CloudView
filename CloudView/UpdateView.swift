@@ -120,65 +120,36 @@ class UpdateView {
         layerOne.lineWidth = 2.0
         layerTwo.lineWidth = 2.0
         
-        layerOne.strokeColor = UIColor.blue.cgColor
-        layerTwo.strokeColor = UIColor.blue.cgColor
+        layerOne.strokeColor = UIColor.orange.cgColor
+        layerTwo.strokeColor = UIColor.black.cgColor
      
         layerOne.fillColor = nil
         layerTwo.fillColor = nil
         
-        view.layer.addSublayer(layerOne)
         view.layer.addSublayer(layerTwo)
+        view.layer.addSublayer(layerOne)
+        
         //self.layer.insertSublayer(layerOne, atIndex: 0)
         //self.layer.insertSublayer(layerTwo, atIndex: 0)
     }
     
-    static func handlePrecipCompletion(_ viewOne: UIView, viewTwo: UIView, viewThree: UIView) {
+    static func handlePrecipCompletion(_ viewOne: UIView, viewTwo: UIView, viewThree: UIView, precip: NOAAPrecipArrays) {
+            
+            UpdateView.drawChart(viewOne, current: precip.currentWeekPrecipArray, normal: precip.normalWeekPrecipArray)
+            UpdateView.drawChart(viewTwo, current: precip.currentMonthPrecipArray, normal: precip.normalMonthPrecipArray)
+            UpdateView.drawChart(viewThree, current: precip.currentYearPrecipCumulative, normal: precip.normalYearPrecipArray)
+            
+            
         
-        //print("checking")
-        //print(mainWeatherData.currentPrecipLoaded)
-        //print(mainWeatherData.normalPrecipLoaded)
-        
-        if mainWeatherData.currentPrecipLoaded && mainWeatherData.normalPrecipLoaded {
-            
-            UpdateView.drawChart(viewOne, current: mainWeatherData.currentWeekPrecipArray, normal: mainWeatherData.normalWeekPrecipArray)
-            UpdateView.drawChart(viewTwo, current: mainWeatherData.currentMonthPrecipArray, normal: mainWeatherData.normalMonthPrecipArray)
-            UpdateView.drawChart(viewThree, current: mainWeatherData.currentYearPrecipCumulative, normal: mainWeatherData.normalYearPrecipArray)
-            
-            
-        }
     }
     
-    static func handleTempCompletion(_ viewOne: UIView, viewTwo: UIView, viewThree: UIView) {
-        if mainWeatherData.currentTMAXLoaded && mainWeatherData.normalTMAXLoaded && mainWeatherData.currentTMINLoaded && mainWeatherData.normalTMINLoaded {
-            
-            mainWeatherData.currentYearDegreeDayOneCumulative = TransformArray.toDegreeDay(mainSettingsData.minTempOne, maxTemp: mainSettingsData.maxTempOne, tMin: mainWeatherData.currentYearTemperatureMinArray, tMax: mainWeatherData.currentYearTemperatureMaxArray)
-            
-            mainWeatherData.currentYearDegreeDayOneCumulative = TransformArray.toCumulative(mainWeatherData.currentYearDegreeDayOneCumulative)
-            
-            mainWeatherData.normalYearDegreeDayOneCumulative = TransformArray.toDegreeDay(mainSettingsData.minTempOne, maxTemp: mainSettingsData.maxTempOne, tMin: mainWeatherData.normalYearTemperatureMinArray, tMax: mainWeatherData.normalYearTemperatureMaxArray)
-            mainWeatherData.normalYearDegreeDayOneCumulative = TransformArray.toCumulative(mainWeatherData.normalYearDegreeDayOneCumulative)
-            
-            UpdateView.drawChart(viewOne, current: mainWeatherData.currentYearDegreeDayOneCumulative, normal: mainWeatherData.normalYearDegreeDayOneCumulative)
-            
-            mainWeatherData.currentYearDegreeDayTwoCumulative = TransformArray.toDegreeDay(mainSettingsData.minTempTwo, maxTemp: mainSettingsData.maxTempTwo, tMin: mainWeatherData.currentYearTemperatureMinArray, tMax: mainWeatherData.currentYearTemperatureMaxArray)
-            
-            mainWeatherData.currentYearDegreeDayTwoCumulative = TransformArray.toCumulative(mainWeatherData.currentYearDegreeDayTwoCumulative)
-            
-            mainWeatherData.normalYearDegreeDayTwoCumulative = TransformArray.toDegreeDay(mainSettingsData.minTempTwo, maxTemp: mainSettingsData.maxTempTwo, tMin: mainWeatherData.normalYearTemperatureMinArray, tMax: mainWeatherData.normalYearTemperatureMaxArray)
-            mainWeatherData.normalYearDegreeDayTwoCumulative = TransformArray.toCumulative(mainWeatherData.normalYearDegreeDayTwoCumulative)
-            
-            UpdateView.drawChart(viewTwo, current: mainWeatherData.currentYearDegreeDayTwoCumulative, normal: mainWeatherData.normalYearDegreeDayTwoCumulative)
-            
-            mainWeatherData.currentYearDegreeDayThreeCumulative = TransformArray.toDegreeDay(mainSettingsData.minTempThree, maxTemp: mainSettingsData.maxTempThree, tMin: mainWeatherData.currentYearTemperatureMinArray, tMax: mainWeatherData.currentYearTemperatureMaxArray)
-            
-            mainWeatherData.currentYearDegreeDayThreeCumulative = TransformArray.toCumulative(mainWeatherData.currentYearDegreeDayThreeCumulative)
-            
-            mainWeatherData.normalYearDegreeDayThreeCumulative = TransformArray.toDegreeDay(mainSettingsData.minTempThree, maxTemp: mainSettingsData.maxTempThree, tMin: mainWeatherData.normalYearTemperatureMinArray, tMax: mainWeatherData.normalYearTemperatureMaxArray)
-            mainWeatherData.normalYearDegreeDayThreeCumulative = TransformArray.toCumulative(mainWeatherData.normalYearDegreeDayThreeCumulative)
-            
-            UpdateView.drawChart(viewThree, current: mainWeatherData.currentYearDegreeDayThreeCumulative, normal: mainWeatherData.normalYearDegreeDayThreeCumulative)
+    static func handleTempCompletion(_ viewOne: UIView, viewTwo: UIView, viewThree: UIView, temp: NOAATempArrays) {
+        
+            //UpdateView.drawChart(viewOne, current: temp.currentYearDegreeDayOneCumulative, normal: temp.normalYearDegreeDayOneCumulative)
+            //UpdateView.drawChart(viewTwo, current: temp.currentYearDegreeDayTwoCumulative, normal: temp.normalYearDegreeDayTwoCumulative)
+            //UpdateView.drawChart(viewThree, current: temp.currentYearDegreeDayThreeCumulative, normal: temp.normalYearDegreeDayThreeCumulative)
             
            
-        }
+        
     }
 }

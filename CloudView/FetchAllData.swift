@@ -48,12 +48,12 @@ class FetchAllData {
             return
         }
         
-        FetchAllData.precip(viewOne, viewTwo: viewTwo, viewThree: viewThree)
+        //FetchAllData.precip(viewOne, viewTwo: viewTwo, viewThree: viewThree)
     
     }
     
     
-    static func precip(_ viewOne: UIView, viewTwo: UIView, viewThree: UIView) {
+  /*  static func precip(_ viewOne: UIView, viewTwo: UIView, viewThree: UIView) {
 
         //let formatter = DateFormatter()
         //formatter.dateFormat = "yyyy-MM-dd"
@@ -150,7 +150,7 @@ class FetchAllData {
             return
         }
         
-    }
+    }*/
 
 }
 

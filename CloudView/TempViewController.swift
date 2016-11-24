@@ -50,7 +50,9 @@ class TempViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FetchAllData.temp(tempViewOne, viewTwo: tempViewTwo, viewThree: tempViewThree)
+        APIManager.sharedInstance.fetchTemp() { result in
+            UpdateView.handleTempCompletion(self.tempViewOne, viewTwo: self.tempViewTwo, viewThree: self.tempViewThree, temp: result)
+        }
         
         tempViewOne.layer.isHidden = false
         tempViewTwo.layer.isHidden = true

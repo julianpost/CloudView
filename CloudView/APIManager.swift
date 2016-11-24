@@ -18,21 +18,12 @@ enum APIManagerError: Error {
 }
 
 class APIManager {
-    
-    
+
     static let sharedInstance = APIManager()
     
     // MARK: - API Calls
-    func getWeather() -> Void {
-        Alamofire.request(NOAARouter.getNormalYearPrecip())
-            .responseString { response in
-                if let receivedString = response.result.value {
-                    print(receivedString)
-                }
-        }
-    }
     
-    func fetchPrecip(completionHandler: @escaping (Result<Any>) -> Void) {
+    func fetchPrecip(completionHandler: @escaping (NOAAPrecipArrays) -> Void) {
         
         var currentYearPrecip: [Date:Float] = [:]
         var normalYearPrecip: [Date:Float] = [:]
@@ -42,10 +33,8 @@ class APIManager {
         
         func initWeatherData() {
             if currentYearPrecipBool && normalYearPrecipBool {
-                //initialize weatherDataArrays
                 let precip = NOAAPrecipArrays(fromCurrentYearPrecip: currentYearPrecip, fromNormalYearPrecip: normalYearPrecip)
-                print(precip.currentYearPrecipArray)
-                print("precip all done")
+                completionHandler(precip)
             }
         }
         
@@ -68,7 +57,7 @@ class APIManager {
         }
     }
     
-    func fetchTemp(completionHandler: @escaping (Result<Any>) -> Void) {
+    func fetchTemp(completionHandler: @escaping (NOAATempArrays) -> Void) {
         
         var currentYearTMax: [Date:Float] = [:]
         var normalYearTMax: [Date:Float] = [:]
@@ -82,10 +71,8 @@ class APIManager {
         
         func initWeatherData() {
             if currentYearTMaxBool && normalYearTMaxBool && currentYearTMinBool && normalYearTMinBool {
-                //initialize weatherDataArrays
                 let temp = NOAATempArrays(fromCurrentYearTMax: currentYearTMax, fromNormalYearTMax: normalYearTMax, fromCurrentYearTemperatureMin: currentYearTMin, fromNormalYearTemperatureMin: normalYearTMin)
-                print(temp.currentYearTemperatureMinArray)
-                print("temp all done")
+                completionHandler(temp)
             }
         }
         
@@ -126,52 +113,6 @@ class APIManager {
         }
         
     }
-    
-    func fetchGists(_ urlRequest: URLRequestConvertible, completionHandler: @escaping (Result<[NOAAStationFile]>, String?) -> Void) {
-        Alamofire.request(urlRequest)
-            .responseJSON { response in
-                if let urlResponse = response.response,
-                    let authError = self.checkUnauthorized(urlResponse: urlResponse) {
-                    completionHandler(.failure(authError), nil)
-                    return
-                    }
-                let result = self.gistArrayFromResponse(response: response)
-                let next = self.parseNextPageFromHeaders(response: response.response)
-                completionHandler(result, next)
-                }
-        }
-    
-       // MARK: - Helpers
-   
-    
-    private func gistArrayFromResponse(response: DataResponse<Any>) -> Result<[NOAAStationFile]> {
-        guard response.result.error == nil else {
-            print(response.result.error!)
-            return .failure(APIManagerError.network(error: response.result.error!))
-        }
-        
-        // make sure we got JSON and it's an array
-        guard let jsonArray = response.result.value as? [[String: Any]] else {
-            print("didn't get array of gists object as JSON from API")
-            return .failure(APIManagerError.objectSerialization(reason:
-                "Did not get JSON dictionary in response"))
-        }
-        
-        // check for "message" errors in the JSON because this API does that
-        if let jsonDictionary = response.result.value as? [String: Any],
-            let errorMessage = jsonDictionary["message"] as? String {
-            return .failure(APIManagerError.apiProvidedError(reason: errorMessage))
-        }
-        
-        // turn JSON in to gists
-        var gists = [NOAAStationFile]()
-        for item in jsonArray {
-            if let gist = NOAAStationFile(json: item) {
-                gists.append(gist)
-            }
-        }
-        return .success(gists)
-    }
         
     private func nOAAArrayFromResponse(response: DataResponse<Any>) -> Result<[Date : Float]> {
         guard response.result.error == nil else {
@@ -210,13 +151,59 @@ class APIManager {
         }
         return .success(dict)
     }
-        
-    func nOAAInitialParse(json: [String: Any]) -> [Date : Float] {
-            
+    
+    /* func fetchGists(_ urlRequest: URLRequestConvertible, completionHandler: @escaping (Result<[NOAAStationFile]>, String?) -> Void) {
+     Alamofire.request(urlRequest)
+     .responseJSON { response in
+     if let urlResponse = response.response,
+     let authError = self.checkUnauthorized(urlResponse: urlResponse) {
+     completionHandler(.failure(authError), nil)
+     return
+     }
+     let result = self.gistArrayFromResponse(response: response)
+     let next = self.parseNextPageFromHeaders(response: response.response)
+     completionHandler(result, next)
+     }
+     }*/
+    
+    // MARK: - Helpers
+    
+    
+    /* private func gistArrayFromResponse(response: DataResponse<Any>) -> Result<[NOAAStationFile]> {
+     guard response.result.error == nil else {
+     print(response.result.error!)
+     return .failure(APIManagerError.network(error: response.result.error!))
+     }
+     
+     // make sure we got JSON and it's an array
+     guard let jsonArray = response.result.value as? [[String: Any]] else {
+     print("didn't get array of gists object as JSON from API")
+     return .failure(APIManagerError.objectSerialization(reason:
+     "Did not get JSON dictionary in response"))
+     }
+     
+     // check for "message" errors in the JSON because this API does that
+     if let jsonDictionary = response.result.value as? [String: Any],
+     let errorMessage = jsonDictionary["message"] as? String {
+     return .failure(APIManagerError.apiProvidedError(reason: errorMessage))
+     }
+     
+     // turn JSON in to gists
+     var gists = [NOAAStationFile]()
+     for item in jsonArray {
+     if let gist = NOAAStationFile(json: item) {
+     gists.append(gist)
+     }
+     }
+     return .success(gists)
+     }*/
+    
+   /* func nOAAInitialParse(json: [String: Any]) -> [Date : Float] {
+     
         var dict: [Date : Float] = [:]
-        
+     
         if let array = json["results"] as? [[String: Any]] {
-                
+     
             for i in array {
                 if let date = i["date"], let value = i["value"] {
                     let stringOfDate = "\(date)"
@@ -233,9 +220,9 @@ class APIManager {
         }
             
         return dict
-    }
+    }*/
     
-    func checkUnauthorized(urlResponse: HTTPURLResponse) -> (Error?) {
+  /*  func checkUnauthorized(urlResponse: HTTPURLResponse) -> (Error?) {
         if (urlResponse.statusCode == 401) {
             //self.OAuthToken = nil
             return APIManagerError.authLost(reason: "Not Logged In")
@@ -287,5 +274,5 @@ class APIManager {
             return nextURL.substring(with: trimmedRange)
         }
         return nil
-    }
+    }*/
 }

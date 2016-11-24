@@ -57,20 +57,10 @@ class PrecipViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         placesClient = GMSPlacesClient.shared()
         
-        //FetchAllData.getLatLon(viewOne: precipViewOne, viewTwo: precipViewTwo, viewThree: precipViewThree, placesClient: placesClient!)
         
         APIManager.sharedInstance.fetchPrecip() { result in
-            guard result.error == nil else {
-            self.handleLoadGistsError(result.error!)
-            return
-            }
-        }
-        
-        APIManager.sharedInstance.fetchTemp() { result in
-            guard result.error == nil else {
-                self.handleLoadGistsError(result.error!)
-                return
-            }
+            
+           UpdateView.handlePrecipCompletion(self.precipViewOne, viewTwo: self.precipViewTwo, viewThree: self.precipViewThree, precip: result)
         }
         
         precipViewOne.layer.isHidden = true

@@ -13,7 +13,6 @@
 		E85F7BA81DBBEAE0007A5C55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E85F7BA71DBBEAE0007A5C55 /* Assets.xcassets */; };
 		E85F7BAB1DBBEAE0007A5C55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E85F7BA91DBBEAE0007A5C55 /* LaunchScreen.storyboard */; };
 		E85F7BB31DBBEB14007A5C55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E85F7BB21DBBEB14007A5C55 /* Main.storyboard */; };
-		E85F7BB51DBBEB45007A5C55 /* WeatherDataArrays.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BB41DBBEB45007A5C55 /* WeatherDataArrays.swift */; };
 		E85F7BB71DBBEB53007A5C55 /* UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BB61DBBEB53007A5C55 /* UpdateView.swift */; };
 		E85F7BB91DBBEB5D007A5C55 /* TempViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BB81DBBEB5D007A5C55 /* TempViewController.swift */; };
 		E85F7BBB1DBBEB64007A5C55 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BBA1DBBEB64007A5C55 /* SettingsViewController.swift */; };
@@ -23,8 +22,6 @@
 		E85F7BC31DBBEB95007A5C55 /* FetchAllData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BC21DBBEB95007A5C55 /* FetchAllData.swift */; };
 		E85F7BC51DBBEB9B007A5C55 /* DateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BC41DBBEB9B007A5C55 /* DateHandler.swift */; };
 		E85F7BC71DBBEBA8007A5C55 /* ArrayCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BC61DBBEBA8007A5C55 /* ArrayCalculations.swift */; };
-		E85F7BC91DBBEDE2007A5C55 /* LocationFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BC81DBBEDE2007A5C55 /* LocationFinder.swift */; };
-		E85F7BCB1DBBEE6E007A5C55 /* NOAARequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BCA1DBBEE6E007A5C55 /* NOAARequests.swift */; };
 		E8975D941DD39D190033C4EC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8975D931DD39D190033C4EC /* Location.swift */; };
 		E8975D961DD3BB070033C4EC /* NOAAPrecipArrays.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8975D951DD3BB070033C4EC /* NOAAPrecipArrays.swift */; };
 		E8975D981DD3BB180033C4EC /* NOAATempArrays.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8975D971DD3BB180033C4EC /* NOAATempArrays.swift */; };
@@ -47,7 +44,6 @@
 		E85F7BAA1DBBEAE0007A5C55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E85F7BAC1DBBEAE0007A5C55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E85F7BB21DBBEB14007A5C55 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		E85F7BB41DBBEB45007A5C55 /* WeatherDataArrays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherDataArrays.swift; sourceTree = "<group>"; };
 		E85F7BB61DBBEB53007A5C55 /* UpdateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateView.swift; sourceTree = "<group>"; };
 		E85F7BB81DBBEB5D007A5C55 /* TempViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempViewController.swift; sourceTree = "<group>"; };
 		E85F7BBA1DBBEB64007A5C55 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -57,8 +53,6 @@
 		E85F7BC21DBBEB95007A5C55 /* FetchAllData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchAllData.swift; sourceTree = "<group>"; };
 		E85F7BC41DBBEB9B007A5C55 /* DateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHandler.swift; sourceTree = "<group>"; };
 		E85F7BC61DBBEBA8007A5C55 /* ArrayCalculations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayCalculations.swift; sourceTree = "<group>"; };
-		E85F7BC81DBBEDE2007A5C55 /* LocationFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationFinder.swift; sourceTree = "<group>"; };
-		E85F7BCA1DBBEE6E007A5C55 /* NOAARequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NOAARequests.swift; sourceTree = "<group>"; };
 		E8975D931DD39D190033C4EC /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		E8975D951DD3BB070033C4EC /* NOAAPrecipArrays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NOAAPrecipArrays.swift; sourceTree = "<group>"; };
 		E8975D971DD3BB180033C4EC /* NOAATempArrays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NOAATempArrays.swift; sourceTree = "<group>"; };
@@ -125,7 +119,6 @@
 		E8A1055E1DCFD7D10000450C /* Files */ = {
 			isa = PBXGroup;
 			children = (
-				E85F7BB41DBBEB45007A5C55 /* WeatherDataArrays.swift */,
 				E85F7BBC1DBBEB6C007A5C55 /* SettingsDataArrays.swift */,
 				E89AB31B1DCA35820087A2CE /* DSTopFile.swift */,
 				E89AB31D1DCA434A0087A2CE /* DSDaily.swift */,
@@ -153,9 +146,7 @@
 				E89AB31F1DCA5BD90087A2CE /* NOAARouter.swift */,
 				E843307F1DDE0E9000452583 /* DarkSkyRouter.swift */,
 				E8C4418C1DCB73F8005B8007 /* APIManager.swift */,
-				E85F7BC81DBBEDE2007A5C55 /* LocationFinder.swift */,
 				E85F7BC21DBBEB95007A5C55 /* FetchAllData.swift */,
-				E85F7BCA1DBBEE6E007A5C55 /* NOAARequests.swift */,
 			);
 			name = "Web Requests";
 			sourceTree = "<group>";
@@ -305,13 +296,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E84330801DDE0E9000452583 /* DarkSkyRouter.swift in Sources */,
-				E85F7BC91DBBEDE2007A5C55 /* LocationFinder.swift in Sources */,
 				E85F7BC51DBBEB9B007A5C55 /* DateHandler.swift in Sources */,
 				E85F7BB91DBBEB5D007A5C55 /* TempViewController.swift in Sources */,
-				E85F7BCB1DBBEE6E007A5C55 /* NOAARequests.swift in Sources */,
 				E8975D961DD3BB070033C4EC /* NOAAPrecipArrays.swift in Sources */,
 				E85F7BC11DBBEB7D007A5C55 /* LocationFinderViewController.swift in Sources */,
-				E85F7BB51DBBEB45007A5C55 /* WeatherDataArrays.swift in Sources */,
 				E8975D981DD3BB180033C4EC /* NOAATempArrays.swift in Sources */,
 				E85F7BBD1DBBEB6C007A5C55 /* SettingsDataArrays.swift in Sources */,
 				E89AB31E1DCA434A0087A2CE /* DSDaily.swift in Sources */,

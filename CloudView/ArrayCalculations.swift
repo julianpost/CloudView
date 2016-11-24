@@ -19,10 +19,8 @@ class TransformArray {
         for (_,value) in sortedArray {
             
             arr.append(value)
-            
         }
         return arr
-
     }
     
     
@@ -61,23 +59,17 @@ class TransformArray {
     static func toCurrentWeek(_ dictionary: [Foundation.Date:Float]) -> [Float] {
         
         var arr: [Float] = []
-        //let today = Foundation.Date()
+        
         let gregorian: Calendar! = Calendar(identifier: Calendar.Identifier.gregorian)
         
         var start = dateFor.currentWeekStart
         let end = dateFor.currentWeekEnd
-        
-        //print("start\(start)")
-        //print("end\(end)")
         
         while start.compare(end) != ComparisonResult.orderedSame {
             var counter = 0
             
             if let value = dictionary[start] {
                 
-                //print("value\(value)")
-                
-                //arr[counter] = value
                 arr.insert(value, at: counter)
             }
             
@@ -85,8 +77,6 @@ class TransformArray {
             var dateComponents = DateComponents()
             dateComponents.day = 1
             start = gregorian.date(byAdding: dateComponents, to: start)!
-            
-            // increment the counter by 1
             
             counter += 1
         }
@@ -98,21 +88,17 @@ class TransformArray {
     static func toNormalMonth(_ dictionary: [Foundation.Date:Float]) -> [Float] {
         
         var arr: [Float] = []
-        //let today = Foundation.Date()
+        
         let gregorian: Calendar! = Calendar(identifier: Calendar.Identifier.gregorian)
         
         var start = dateFor.normalMonthStart
         let end = dateFor.normalMonthEnd
-        
-        //print(start)
-        //print(end)
         
         while start.compare(end) != ComparisonResult.orderedSame {
             var counter = 0
             
             if let value = dictionary[start] {
                 
-                //arr[counter] = value
                 arr.insert(value, at: counter)
             }
             
@@ -121,35 +107,25 @@ class TransformArray {
             dateComponents.day = 1
             start = gregorian.date(byAdding: dateComponents, to: start)!
             
-            // increment the counter by 1
-            
             counter += 1
         }
-        
-        
         return arr
     }
     
     static func toNormalWeek(_ dictionary: [Foundation.Date:Float]) -> [Float] {
         
         var arr: [Float] = []
-        //let today = Foundation.Date()
+        
         let gregorian: Calendar! = Calendar(identifier: Calendar.Identifier.gregorian)
         
         var start = dateFor.normalWeekStart
         let end = dateFor.normalWeekEnd
         
-        //print("start\(start)")
-        //print("end\(end)")
-        
         while start.compare(end) != ComparisonResult.orderedSame {
             var counter = 0
             
             if let value = dictionary[start] {
-                
-                //print("value\(value)")
-                
-                //arr[counter] = value
+    
                 arr.insert(value, at: counter)
             }
             
@@ -158,12 +134,8 @@ class TransformArray {
             dateComponents.day = 1
             start = gregorian.date(byAdding: dateComponents, to: start)!
             
-            // increment the counter by 1
-            
             counter += 1
         }
-        
-        
         return arr
     }
     
@@ -191,7 +163,6 @@ class TransformArray {
                 else {
             degreeDay.append((tMin[i] + tMax[i])/2 - baseTempFloat)
                 }
-            
         }
         
         for i in 0...degreeDay.count-1 {
@@ -199,9 +170,7 @@ class TransformArray {
                 degreeDay[i] = 0
             }
         }
-        
         return degreeDay
-        
     }
     
     static func toCumulative(_ array: [Float]) -> [Float] {
@@ -211,17 +180,10 @@ class TransformArray {
         for i in 1...array.count-1 {
             
             newArray.append(newArray[i-1] + array[i])
-        
         }
         return newArray
     }
-
 }
-
-
-
-
-
 
    /*
         

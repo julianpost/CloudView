@@ -16,9 +16,6 @@ class DateFunctions {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         date = dateFormatter.date(from: string)!
-        //  print("before \(date)")
-        //  date = NSCalendar.currentCalendar().startOfDayForDate(date)
-        //  print("after \(date)")
         
         return date
         
@@ -30,9 +27,6 @@ class DateFunctions {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "[yyyy]-[MM]-[dd]T[HH]:[mm]:[ss]"
         string = dateFormatter.string(from: date)
-        //  print("before \(date)")
-        //  date = NSCalendar.currentCalendar().startOfDayForDate(date)
-        //  print("after \(date)")
         
         return string
         

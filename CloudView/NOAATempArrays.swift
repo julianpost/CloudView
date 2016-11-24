@@ -12,9 +12,7 @@ class NOAATempArrays {
     
     var currentYearTemperatureMaxArray, currentYearTemperatureMinArray, normalYearTemperatureMaxArray,normalYearTemperatureMinArray, currentMonthTemperatureMaxArray, currentMonthTemperatureMinArray, normalMonthTemperatureMaxArray,normalMonthTemperatureMinArray, currentWeekTemperatureMaxArray, currentWeekTemperatureMinArray, normalWeekTemperatureMaxArray,normalWeekTemperatureMinArray: [Float]
     
-    //var currentYearDegreeDayOneCumulative, normalYearDegreeDayOneCumulative, currentYearDegreeDayTwoCumulative, normalYearDegreeDayTwoCumulative, currentYearDegreeDayThreeCumulative, normalYearDegreeDayThreeCumulative: [Float]
-    
-    /*var normalYearPrecipCumulative, currentYearPrecipCumulative, normalYearDegreeDayOneCumulative, currentYearDegreeDayOneCumulative, normalYearDegreeDayTwoCumulative, currentYearDegreeDayTwoCumulative, normalYearDegreeDayThreeCumulative, currentYearDegreeDayThreeCumulative: [Float]*/
+    var currentYearDegreeDayOneCumulative, normalYearDegreeDayOneCumulative, currentYearDegreeDayTwoCumulative, normalYearDegreeDayTwoCumulative, currentYearDegreeDayThreeCumulative, normalYearDegreeDayThreeCumulative: [Float]
     
     init(fromCurrentYearTMax currentYearTemperatureMaxDict: [Date : Float], fromNormalYearTMax normalYearTemperatureMaxDict: [Date : Float], fromCurrentYearTemperatureMin currentYearTemperatureMinDict: [Date : Float], fromNormalYearTemperatureMin normalYearTemperatureMinDict: [Date : Float]) {
         
@@ -34,12 +32,14 @@ class NOAATempArrays {
         normalMonthTemperatureMinArray = TransformArray.toNormalMonth(normalYearTemperatureMinDict)
         normalWeekTemperatureMinArray = TransformArray.toNormalWeek(normalYearTemperatureMinDict)
         
-        /*currentYearDegreeDayOneCumulative
-        normalYearDegreeDayOneCumulative
-        currentYearDegreeDayTwoCumulative
-        normalYearDegreeDayTwoCumulative
-        currentYearDegreeDayThreeCumulative
-        normalYearDegreeDayThreeCumulative*/
+        currentYearDegreeDayOneCumulative = TransformArray.toCumulative(TransformArray.toDegreeDay(mainSettingsData.minTempOne, maxTemp: mainSettingsData.maxTempOne, tMin: currentYearTemperatureMinArray, tMax: currentYearTemperatureMaxArray))
+        normalYearDegreeDayOneCumulative = TransformArray.toCumulative(TransformArray.toDegreeDay(mainSettingsData.minTempOne, maxTemp: mainSettingsData.maxTempOne, tMin: normalYearTemperatureMinArray, tMax: normalYearTemperatureMaxArray))
+        
+        currentYearDegreeDayTwoCumulative = TransformArray.toCumulative(TransformArray.toDegreeDay(mainSettingsData.minTempTwo, maxTemp: mainSettingsData.maxTempTwo, tMin: currentYearTemperatureMinArray, tMax: currentYearTemperatureMaxArray))
+        normalYearDegreeDayTwoCumulative = TransformArray.toCumulative(TransformArray.toDegreeDay(mainSettingsData.minTempTwo, maxTemp: mainSettingsData.maxTempTwo, tMin: normalYearTemperatureMinArray, tMax: normalYearTemperatureMaxArray))
+        
+        currentYearDegreeDayThreeCumulative = TransformArray.toCumulative(TransformArray.toDegreeDay(mainSettingsData.minTempThree, maxTemp: mainSettingsData.maxTempThree, tMin: currentYearTemperatureMinArray, tMax: currentYearTemperatureMaxArray))
+        normalYearDegreeDayThreeCumulative = TransformArray.toCumulative(TransformArray.toDegreeDay(mainSettingsData.minTempThree, maxTemp: mainSettingsData.maxTempThree, tMin: normalYearTemperatureMinArray, tMax: normalYearTemperatureMaxArray))
         
     }
 }

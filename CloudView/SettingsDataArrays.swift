@@ -40,4 +40,4 @@ struct SettingsDataArrays {
     }
 }
 
-var mainSettingsData = SettingsDataArrays(stationsArray: [:], stationFile: "", extent: "", currentStation: "", minTempOne: 0, maxTempOne: 0, minTempTwo: 0, maxTempTwo: 0, minTempThree: 0, maxTempThree: 0, latitude: "", longitude: "", bottomLeftLat: "", bottomLeftLon: "", topRightLat: "", topRightLon: "")
+var mainSettingsData = SettingsDataArrays(stationsArray: [:], stationFile: "", extent: "", currentStation: "", minTempOne: 52, maxTempOne: 86, minTempTwo: 32, maxTempTwo: 86, minTempThree: 46, maxTempThree: 90, latitude: "", longitude: "", bottomLeftLat: "", bottomLeftLon: "", topRightLat: "", topRightLon: "")

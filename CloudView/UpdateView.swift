@@ -145,9 +145,9 @@ class UpdateView {
     
     static func handleTempCompletion(_ viewOne: UIView, viewTwo: UIView, viewThree: UIView, temp: NOAATempArrays) {
         
-            //UpdateView.drawChart(viewOne, current: temp.currentYearDegreeDayOneCumulative, normal: temp.normalYearDegreeDayOneCumulative)
-            //UpdateView.drawChart(viewTwo, current: temp.currentYearDegreeDayTwoCumulative, normal: temp.normalYearDegreeDayTwoCumulative)
-            //UpdateView.drawChart(viewThree, current: temp.currentYearDegreeDayThreeCumulative, normal: temp.normalYearDegreeDayThreeCumulative)
+            UpdateView.drawChart(viewOne, current: temp.currentYearDegreeDayOneCumulative, normal: temp.normalYearDegreeDayOneCumulative)
+            UpdateView.drawChart(viewTwo, current: temp.currentYearDegreeDayTwoCumulative, normal: temp.normalYearDegreeDayTwoCumulative)
+            UpdateView.drawChart(viewThree, current: temp.currentYearDegreeDayThreeCumulative, normal: temp.normalYearDegreeDayThreeCumulative)
             
            
         

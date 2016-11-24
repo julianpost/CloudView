@@ -82,7 +82,7 @@ enum NOAARouter: URLRequestConvertible {
             case .getNormalYearTMax():
                 return ([
                     "datasetid" : "NORMAL_DLY",
-                    "datatypeid" : "YTD-TMAX-NORMAL",
+                    "datatypeid" : "DLY-TMAX-NORMAL",
                     "stationid" : mainSettingsData.currentStation,
                     "startdate" : dateFor.stringOfNormalYearStart,
                     "enddate" : dateFor.stringOfNormalYearEnd,
@@ -102,7 +102,7 @@ enum NOAARouter: URLRequestConvertible {
             case .getNormalYearTMin():
                 return ([
                     "datasetid" : "NORMAL_DLY",
-                    "datatypeid" : "YTD-TMIN-NORMAL",
+                    "datatypeid" : "DLY-TMIN-NORMAL",
                     "stationid" : mainSettingsData.currentStation,
                     "startdate" : dateFor.stringOfNormalYearStart,
                     "enddate" : dateFor.stringOfNormalYearEnd,

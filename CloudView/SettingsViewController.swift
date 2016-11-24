@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-/*class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class SettingsViewController: UIViewController/*, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate*/ {
     
     @IBOutlet weak var tblResults: UITableView!
     
@@ -95,7 +95,7 @@ import UIKit
        //tblResults.delegate = self
        //tblResults.dataSource = self
         
-        self.tblResults.register(UITableViewCell.self, forCellReuseIdentifier: "idCell")
+        //self.tblResults.register(UITableViewCell.self, forCellReuseIdentifier: "idCell")
         
         //rangeSlider1.minimumValue = 0
         //rangeSlider1.maximumValue = 120
@@ -134,7 +134,7 @@ import UIKit
         maxTempThreeLbl.text = "\(mainSettingsData.maxTempThree)"
     
         
-        loadListOfLocations()
+        //loadListOfLocations()
         
         // Uncomment the following line to enable the default search controller.
         // configureSearchController()
@@ -163,7 +163,7 @@ import UIKit
     
     // MARK: UITableView Delegate and Datasource functions
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+ /*   func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
@@ -175,10 +175,10 @@ import UIKit
         else {
             return mainSettingsData.stationsArray.count
         }
-    }
+    }*/
     
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    /*func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "idCell", for: indexPath)
         
         if shouldShowSearchResults {
@@ -194,7 +194,7 @@ import UIKit
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60.0
-    }
+    }*/
     
     
     // MARK: Custom functions
@@ -219,4 +219,4 @@ import UIKit
     }*/
 
 }
-*/
+

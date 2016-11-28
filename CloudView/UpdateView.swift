@@ -23,22 +23,7 @@ class UpdateView {
         let width = view.frame.width
         let height = view.frame.height
         
-        //set up background clipping area
-   /*     let path = UIBezierPath(roundedRect: rect,
-                                byRoundingCorners: UIRectCorner.AllCorners,
-                                cornerRadii: CGSize(width: 8.0, height: 8.0))
-        path.addClip() */
-        
-        //2 - get the current context
-    //    let context = UIGraphicsGetCurrentContext()
-       // let colors = [startColor.CGColor, endColor.CGColor]
-        
-        //3 - set up the color space
-     //   let colorSpace = CGColorSpaceCreateDeviceRGB()
-        
-
- 
- 
+      
         //calculate the x point
         
         let margin:CGFloat = 20.0
@@ -74,11 +59,6 @@ class UpdateView {
         let graphPath = UIBezierPath()
         let graphPathTwo = UIBezierPath()
         
-        
-        
-        
-        
-        
         //go to start of line
         graphPath.move(to: CGPoint(x:columnXPoint(0),
             y:columnYPoint(current[0])))
@@ -99,7 +79,6 @@ class UpdateView {
             
             let nextPointTwo = CGPoint(x:columnXPoint(i),
                                        y:columnYPoint(normal[i]))
-            
             graphPathTwo.addLine(to: nextPointTwo)
         }
         
@@ -138,9 +117,6 @@ class UpdateView {
             UpdateView.drawChart(viewOne, current: precip.currentWeekPrecipArray, normal: precip.normalWeekPrecipArray)
             UpdateView.drawChart(viewTwo, current: precip.currentMonthPrecipArray, normal: precip.normalMonthPrecipArray)
             UpdateView.drawChart(viewThree, current: precip.currentYearPrecipCumulative, normal: precip.normalYearPrecipArray)
-            
-            
-        
     }
     
     static func handleTempCompletion(_ viewOne: UIView, viewTwo: UIView, viewThree: UIView, temp: NOAATempArrays) {
@@ -148,8 +124,5 @@ class UpdateView {
             UpdateView.drawChart(viewOne, current: temp.currentYearDegreeDayOneCumulative, normal: temp.normalYearDegreeDayOneCumulative)
             UpdateView.drawChart(viewTwo, current: temp.currentYearDegreeDayTwoCumulative, normal: temp.normalYearDegreeDayTwoCumulative)
             UpdateView.drawChart(viewThree, current: temp.currentYearDegreeDayThreeCumulative, normal: temp.normalYearDegreeDayThreeCumulative)
-            
-           
-        
     }
 }

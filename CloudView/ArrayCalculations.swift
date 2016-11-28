@@ -10,7 +10,6 @@ import Foundation
 
 class TransformArray {
     
-  
     static func toSimple(_ dictionary: [Foundation.Date:Float]) -> [Float] {
         
         let sortedArray = dictionary.sorted { $0.0.compare($1.0) == .orderedAscending }

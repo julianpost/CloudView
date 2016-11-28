@@ -68,14 +68,14 @@ class LocationFinderViewController: UIViewController, CLLocationManagerDelegate 
                         .joined(separator: "\n")
                     print(place.coordinate.latitude)
                     mainSettingsData.extent = "\(place.coordinate.latitude), \(place.coordinate.longitude), \(place.coordinate.latitude), \(place.coordinate.longitude)"
-                    CallForLocations.makeCategoryCall(dateFor.stringOfNormalYearStart, endDate: dateFor.stringOfNormalYearEnd, dataSet: "GHCND", dataType: "PRCP") { responseObject in
+                    /*CallForLocations.makeCategoryCall(dateFor.stringOfNormalYearStart, endDate: dateFor.stringOfNormalYearEnd, dataSet: "GHCND", dataType: "PRCP") { responseObject in
                         // use responseObject and error here
                         print("response array\(responseObject)")
                         mainSettingsData.stationsArray = responseObject
                         
                         
                         return
-                    }
+                    }*/
                     
                     print(mainSettingsData.stationsArray)
                     

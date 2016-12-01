@@ -24,6 +24,9 @@ class PrecipViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var fridayBar: UIView!
     @IBOutlet weak var saturdayBar: UIView!
     
+    @IBOutlet weak var weekTotalPrecip: UILabel!
+    @IBOutlet weak var fortyEightHourPrecip: UILabel!
+    
     var gists = [NOAAStationFile]()
     
     var placesClient: GMSPlacesClient?
@@ -72,20 +75,95 @@ class PrecipViewController: UIViewController, CLLocationManagerDelegate {
             
             print(result.currentWeekPrecipArray)
             
-            self.sundayBar.frame.size.height = self.precipViewOne.frame.size.height * CGFloat(result.currentWeekPrecipArray[0]/result.currentWeekPrecipArray.max()!)
+            self.weekTotalPrecip.text = String(result.currentWeekPrecipArray.reduce(0, +)) + " inches"
+            self.fortyEightHourPrecip.text = String(result.currentWeekPrecipArray[5]+result.currentWeekPrecipArray[6]) + " inches"
             
-            self.sundayBar.frame.origin.y = 300-self.sundayBar.frame.size.height
+            if let maxThisWeek = result.currentWeekPrecipArray.max() {
+                if result.currentWeekPrecipArray.count > 0 {
+                    self.sundayBar.frame.size.height = self.precipViewOne.frame.size.height * CGFloat(result.currentWeekPrecipArray[0]/maxThisWeek + 0.01)
+                    self.sundayBar.frame.origin.y = 300-self.sundayBar.frame.size.height
+                }
+                    
+                else {
+                    self.sundayBar.frame.size.height = CGFloat(0.05/maxThisWeek)
+                    self.sundayBar.frame.origin.y = 300-self.sundayBar.frame.size.height
+                }
+            }
             
-            self.mondayBar.frame.size.height = self.precipViewOne.frame.size.height * CGFloat(result.currentWeekPrecipArray[1]/result.currentWeekPrecipArray.max()!)
+            if let maxThisWeek = result.currentWeekPrecipArray.max() {
+                if result.currentWeekPrecipArray.count > 1 {
+                    self.mondayBar.frame.size.height = self.precipViewOne.frame.size.height * CGFloat(result.currentWeekPrecipArray[1]/maxThisWeek + 0.01)
+                    self.mondayBar.frame.origin.y = 300-self.mondayBar.frame.size.height
+                }
+                    
+                else {
+                    self.mondayBar.frame.size.height = CGFloat(0.01/maxThisWeek)
+                    self.mondayBar.frame.origin.y = 300-self.mondayBar.frame.size.height
+                }
+            }
             
-            self.mondayBar.frame.origin.y = 300-self.mondayBar.frame.size.height
+            if let maxThisWeek = result.currentWeekPrecipArray.max() {
+                if result.currentWeekPrecipArray.count > 2 {
+                    self.tuesdayBar.frame.size.height = self.precipViewOne.frame.size.height * CGFloat(result.currentWeekPrecipArray[2]/maxThisWeek + 0.01)
+                    self.tuesdayBar.frame.origin.y = 300-self.tuesdayBar.frame.size.height
+                }
+                    
+                else {
+                    self.tuesdayBar.frame.size.height = CGFloat(0.01/maxThisWeek)
+                    self.tuesdayBar.frame.origin.y = 300-self.tuesdayBar.frame.size.height
+                }
+            }
             
-            self.tuesdayBar.frame.size.height = self.precipViewOne.frame.size.height * CGFloat(result.currentWeekPrecipArray[2]/result.currentWeekPrecipArray.max()!)
+            if let maxThisWeek = result.currentWeekPrecipArray.max() {
+                if result.currentWeekPrecipArray.count > 3 {
+                    self.wednesdayBar.frame.size.height = self.precipViewOne.frame.size.height * CGFloat(result.currentWeekPrecipArray[3]/maxThisWeek + 0.01)
+                    self.wednesdayBar.frame.origin.y = 300-self.wednesdayBar.frame.size.height
+                }
+                    
+                else {
+                    self.wednesdayBar.frame.size.height = CGFloat(0.01/maxThisWeek)
+                    self.wednesdayBar.frame.origin.y = 300-self.wednesdayBar.frame.size.height
+                }
+            }
             
-            self.tuesdayBar.frame.origin.y = 300-self.tuesdayBar.frame.size.height
+            if let maxThisWeek = result.currentWeekPrecipArray.max() {
+                if result.currentWeekPrecipArray.count > 4 {
+                    self.thursdayBar.frame.size.height = self.precipViewOne.frame.size.height * CGFloat(result.currentWeekPrecipArray[4]/maxThisWeek + 0.01)
+                    self.thursdayBar.frame.origin.y = 300-self.thursdayBar.frame.size.height
+                }
+                    
+                else {
+                    self.thursdayBar.frame.size.height = CGFloat(0.01/maxThisWeek)
+                    self.thursdayBar.frame.origin.y = 300-self.thursdayBar.frame.size.height
+                }
+            }
+            
+            if let maxThisWeek = result.currentWeekPrecipArray.max() {
+                if result.currentWeekPrecipArray.count > 5 {
+                    self.fridayBar.frame.size.height = self.precipViewOne.frame.size.height * CGFloat(result.currentWeekPrecipArray[5]/maxThisWeek + 0.01)
+                    self.fridayBar.frame.origin.y = 300-self.fridayBar.frame.size.height
+                }
+                    
+                else {
+                    self.fridayBar.frame.size.height = CGFloat(0.01/maxThisWeek)
+                    self.fridayBar.frame.origin.y = 300-self.fridayBar.frame.size.height
+                }
+            }
+            
+            if let maxThisWeek = result.currentWeekPrecipArray.max() {
+                if result.currentWeekPrecipArray.count > 6 {
+                    self.saturdayBar.frame.size.height = self.precipViewOne.frame.size.height * CGFloat(result.currentWeekPrecipArray[6]/maxThisWeek + 0.01)
+                    self.saturdayBar.frame.origin.y = 300-self.saturdayBar.frame.size.height
+                }
+                    
+                else {
+                    self.saturdayBar.frame.size.height = CGFloat(0.01/maxThisWeek)
+                    self.saturdayBar.frame.origin.y = 300-self.saturdayBar.frame.size.height
+                }
+            }
         }
         
-        // Instantiate a new PrecipWeekView object (inherits and has all properties of UIView)
+       /* // Instantiate a new PrecipWeekView object (inherits and has all properties of UIView)
         let k = PrecipWeekView(frame: CGRect(x: 75, y: 75, width: 150, height: 150))
         
         // Put the rectangle in the canvas in this new object
@@ -96,9 +174,12 @@ class PrecipViewController: UIViewController, CLLocationManagerDelegate {
         // Display the contents (our rectangle) by attaching it
         self.precipViewOne.addSubview(k)
         
-        precipViewOne.layer.isHidden = true
+         */
+        
+        
+        precipViewOne.layer.isHidden = false
         precipViewTwo.layer.isHidden = true
-        precipViewThree.layer.isHidden = false
+        precipViewThree.layer.isHidden = true
     }
     
     override func didReceiveMemoryWarning() {

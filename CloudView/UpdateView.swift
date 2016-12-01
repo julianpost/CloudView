@@ -114,7 +114,7 @@ class UpdateView {
     
     static func handlePrecipCompletion(_ viewOne: UIView, viewTwo: UIView, viewThree: UIView, precip: NOAAPrecipArrays) {
             
-            UpdateView.drawChart(viewOne, current: precip.currentWeekPrecipArray, normal: precip.normalWeekPrecipArray)
+            //UpdateView.drawChart(viewOne, current: precip.currentWeekPrecipArray, normal: precip.normalWeekPrecipArray)
             UpdateView.drawChart(viewTwo, current: precip.currentMonthPrecipArray, normal: precip.normalMonthPrecipArray)
             UpdateView.drawChart(viewThree, current: precip.currentYearPrecipCumulative, normal: precip.normalYearPrecipArray)
     }

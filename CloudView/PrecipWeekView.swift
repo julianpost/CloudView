@@ -6,31 +6,71 @@
 //  Copyright © 2016 Julian Post. All rights reserved.
 //
 
-import Foundation
 import UIKit
+//import PlaygroundSupport
 
-public class PrecipWeekView: UIView {
+class MakeWeekBarView {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    public override func draw(_ frame: CGRect) {
-        let h = frame.height
-        let w = frame.width
-        let color:UIColor = UIColor.yellow
+    static func drawMonthBars(_ mainView: UIView, observations: NOAAPrecipArrays) {
         
-        let drect = CGRect(x: (w * 0.25), y: (h * 0.25), width: (w * 0.1), height: (h * 0.5))
-        let bpath:UIBezierPath = UIBezierPath(rect: drect)
+        var barFrames = [CGRect()]
+        var barViews = [UIView()]
         
-        color.set()
-        bpath.stroke()
+        //let bigFrameSize = CGRect(x: 100, y: 100, width: 400, height: 400)
+        //let barFrameSize = CGRect(x: 100, y: 100, width: 30, height: 300)
+        //let bigFrame = UIView(frame: bigFrameSize)
+        //let barFrame = UIView(frame: barFrameSize)
+        
+        //bigFrame.frame = bigFrameSize
+        
+        //mainView.backgroundColor = UIColor.orange
+        //barFrame.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0)
+        
+        //PlaygroundPage.current.needsIndefiniteExecution = true
+        //PlaygroundPage.current.liveView = bigFrame
+        
+        func makeRectangles() {
+            
+            for i in 0...21 {
+                
+                let value: Float = observations.currentMonthPrecipArray[i]
+                let maxValue: Float = observations.currentMonthPrecipArray.max()!
+                let barHeight = Int(value * 300.0/maxValue)
+                let frame = CGRect(x: 10*i, y: 300-barHeight, width: 6, height: barHeight)
+                
+                barFrames.insert(frame, at: i)
+            }
+            
+        }
+        
+        func makeSubViews() {
+            
+            for i in 0...21 {
+                let view = UIView(frame: barFrames[i])
+                view.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+                
+                barViews.insert(view, at: i)
+            }
+            
+        }
+        
+        
+        func addSubViews() {
+            
+            for i in 0...21 {
+                
+                mainView.addSubview(barViews[i])
+            }
+            
+        }
         
         print("it ran")
         NSLog("drawRect has updated the view")
+        
+        //bigFrame.addSubview(barViews[0])
+        
+        makeRectangles()
+        makeSubViews()
+        addSubViews()
     }
 }

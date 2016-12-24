@@ -162,7 +162,8 @@ class PrecipViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
             
-        MakeBarView.drawMonthBars(self.precipViewTwo, observations: result)
+        //MakeWeekBarView.drawMonthBars(self.precipViewOne, observations: result)
+        MakeMonthBarView.drawMonthBars(self.precipViewTwo, observations: result)
             
         }
         

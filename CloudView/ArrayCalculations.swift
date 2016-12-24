@@ -24,6 +24,13 @@ class TransformArray {
     
     
     static func toCurrentMonth(_ dictionary: [Date:Float]) -> [Float] {
+        
+        let dateComponents = DateComponents()
+        let calendar = Calendar.current
+        let date = calendar.date(from: dateComponents)!
+        
+        let range = calendar.range(of: .day, in: .month, for: date)!
+        let numDays = range.count
     
         var arr: [Float] = []
         //let today = Foundation.Date()
@@ -32,12 +39,13 @@ class TransformArray {
         var start = dateFor.currentMonthStart
         let end = dateFor.currentMonthEnd
         
-        while start.compare(end) != ComparisonResult.orderedSame {
-            var counter = 0
+        //var counter = 0
+        
+        for i in 0...numDays {
             
             if dictionary[start] == nil {
                 let value: Float = 0
-                arr.insert(value, at: counter)
+                arr.insert(value, at: i)
             
             }
             else {
@@ -45,7 +53,7 @@ class TransformArray {
             let value = dictionary[start]
                 
             //arr[counter] = value
-            arr.insert(value!, at: counter)
+            arr.insert(value!, at: i)
             }
             
             // increment the date by 1 day
@@ -55,7 +63,7 @@ class TransformArray {
             
             // increment the counter by 1
             
-            counter += 1
+            //counter += 1
         }
 
     

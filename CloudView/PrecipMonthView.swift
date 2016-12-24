@@ -9,34 +9,37 @@
 import UIKit
 //import PlaygroundSupport
 
-class MakeBarView {
-    
-    //Weekly sample data
-    //var arr:[Float] = mainWeatherData.lastYearTemperatureMaxArray
-    
+class MakeMonthBarView {
     
     
     static func drawMonthBars(_ mainView: UIView, observations: NOAAPrecipArrays) {
+        
+        let dateComponents = DateComponents()
+        let calendar = Calendar.current
+        let date = calendar.date(from: dateComponents)!
+        
+        let range = calendar.range(of: .day, in: .month, for: date)!
+        let numDays = range.count
         
         var barFrames = [CGRect()]
         var barViews = [UIView()]
 
         //let bigFrameSize = CGRect(x: 100, y: 100, width: 400, height: 400)
-        let barFrameSize = CGRect(x: 100, y: 100, width: 30, height: 300)
+        //let barFrameSize = CGRect(x: 100, y: 100, width: 30, height: 300)
         //let bigFrame = UIView(frame: bigFrameSize)
-        let barFrame = UIView(frame: barFrameSize)
+        //let barFrame = UIView(frame: barFrameSize)
 
         //bigFrame.frame = bigFrameSize
 
-        mainView.backgroundColor = UIColor.orange
-        barFrame.backgroundColor = UIColor.blue
+        //mainView.backgroundColor = UIColor.orange
+        //barFrame.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0)
 
         //PlaygroundPage.current.needsIndefiniteExecution = true
         //PlaygroundPage.current.liveView = bigFrame
 
         func makeRectangles() {
     
-            for i in 0...21 {
+            for i in 0...numDays {
                 
                 let value: Float = observations.currentMonthPrecipArray[i]
                 let maxValue: Float = observations.currentMonthPrecipArray.max()!
@@ -50,9 +53,9 @@ class MakeBarView {
 
         func makeSubViews() {
     
-            for i in 0...21 {
+            for i in 0...numDays {
                 let view = UIView(frame: barFrames[i])
-                view.backgroundColor = UIColor.blue
+                view.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
         
                 barViews.insert(view, at: i)
             }
@@ -62,7 +65,7 @@ class MakeBarView {
 
         func addSubViews() {
     
-            for i in 0...21 {
+            for i in 0...numDays {
         
                 mainView.addSubview(barViews[i])
             }

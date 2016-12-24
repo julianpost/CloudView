@@ -99,7 +99,8 @@ class UpdateView {
         layerOne.lineWidth = 2.0
         layerTwo.lineWidth = 2.0
         
-        layerOne.strokeColor = UIColor.orange.cgColor
+        layerOne.strokeColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1).cgColor
+
         layerTwo.strokeColor = UIColor.black.cgColor
      
         layerOne.fillColor = nil
@@ -115,7 +116,7 @@ class UpdateView {
     static func handlePrecipCompletion(_ viewOne: UIView, viewTwo: UIView, viewThree: UIView, precip: NOAAPrecipArrays) {
             
             //UpdateView.drawChart(viewOne, current: precip.currentWeekPrecipArray, normal: precip.normalWeekPrecipArray)
-            UpdateView.drawChart(viewTwo, current: precip.currentMonthPrecipArray, normal: precip.normalMonthPrecipArray)
+            //UpdateView.drawChart(viewTwo, current: precip.currentMonthPrecipArray, normal: precip.normalMonthPrecipArray)
             UpdateView.drawChart(viewThree, current: precip.currentYearPrecipCumulative, normal: precip.normalYearPrecipArray)
     }
     

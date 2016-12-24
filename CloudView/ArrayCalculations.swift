@@ -23,7 +23,7 @@ class TransformArray {
     }
     
     
-    static func toCurrentMonth(_ dictionary: [Foundation.Date:Float]) -> [Float] {
+    static func toCurrentMonth(_ dictionary: [Date:Float]) -> [Float] {
     
         var arr: [Float] = []
         //let today = Foundation.Date()
@@ -35,10 +35,17 @@ class TransformArray {
         while start.compare(end) != ComparisonResult.orderedSame {
             var counter = 0
             
-            if let value = dictionary[start] {
-                
-                //arr[counter] = value
+            if dictionary[start] == nil {
+                let value: Float = 0
                 arr.insert(value, at: counter)
+            
+            }
+            else {
+                
+            let value = dictionary[start]
+                
+            //arr[counter] = value
+            arr.insert(value!, at: counter)
             }
             
             // increment the date by 1 day

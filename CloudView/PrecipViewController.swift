@@ -161,6 +161,9 @@ class PrecipViewController: UIViewController, CLLocationManagerDelegate {
                     self.saturdayBar.frame.origin.y = 300-self.saturdayBar.frame.size.height
                 }
             }
+            
+        MakeBarView.drawMonthBars(self.precipViewTwo, observations: result)
+            
         }
         
        /* // Instantiate a new PrecipWeekView object (inherits and has all properties of UIView)
@@ -175,6 +178,8 @@ class PrecipViewController: UIViewController, CLLocationManagerDelegate {
         self.precipViewOne.addSubview(k)
         
          */
+        
+        
         
         
         precipViewOne.layer.isHidden = false

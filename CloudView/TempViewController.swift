@@ -11,34 +11,25 @@ import UIKit
 class TempViewController: UIViewController {
     
     @IBOutlet weak var tempViewOne: UIView!
-    @IBOutlet weak var tempViewTwo: UIView!
-    @IBOutlet weak var tempViewThree: UIView!
     
-    @IBAction func indexChanged(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex
-        {
-        case 0:
-            tempViewOne.layer.isHidden = false
-            tempViewTwo.layer.isHidden = true
-            tempViewThree.layer.isHidden = true
-        
-        case 1:
-            tempViewOne.layer.isHidden = true
-            tempViewTwo.layer.isHidden = false
-            tempViewThree.layer.isHidden = true
-            
-        case 2:
-            tempViewOne.layer.isHidden = true
-            tempViewTwo.layer.isHidden = true
-            tempViewThree.layer.isHidden = false
-            
-        default:
-            tempViewOne.layer.isHidden = false
-            tempViewTwo.layer.isHidden = true
-            tempViewThree.layer.isHidden = true
-        }
+    @IBOutlet weak var minTempOne: UISlider!
+    @IBOutlet weak var maxTempOne: UISlider!
+    
+    
+    @IBOutlet weak var minTempOneLbl: UILabel!
+    @IBOutlet weak var maxTempOneLbl: UILabel!
+    
+    
+    @IBAction func minTempOneChanged() {
+        mainSettingsData.minTempOne = Int(minTempOne.value)
+        minTempOneLbl.text = "\(mainSettingsData.minTempOne)"
     }
     
+    @IBAction func maxTempOneChanged() {
+        mainSettingsData.maxTempOne = Int(maxTempOne.value)
+        maxTempOneLbl.text = "\(mainSettingsData.maxTempOne)"
+        
+    }
     
     @IBAction func dismissView(_ sender: AnyObject) {
         
@@ -51,19 +42,19 @@ class TempViewController: UIViewController {
         super.viewDidLoad()
         
         APIManager.sharedInstance.fetchTemp() { result in
-            UpdateView.handleTempCompletion(self.tempViewOne, viewTwo: self.tempViewTwo, viewThree: self.tempViewThree, temp: result)
+            UpdateView.handleTempCompletion(self.tempViewOne, temp: result)
         }
         
-        tempViewOne.layer.isHidden = false
-        tempViewTwo.layer.isHidden = true
-        tempViewThree.layer.isHidden = true
+        minTempOne.value = Float(mainSettingsData.minTempOne)
+        maxTempOne.value = Float(mainSettingsData.maxTempOne)
         
+        minTempOneLbl.text = "\(mainSettingsData.minTempOne)"
+        maxTempOneLbl.text = "\(mainSettingsData.maxTempOne)"
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 
     }
-    
 }
 

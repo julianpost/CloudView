@@ -37,7 +37,7 @@ class TransformArray {
         let gregorian: Calendar! = Calendar(identifier: Calendar.Identifier.gregorian)
         
         var start = dateFor.currentMonthStart
-        let end = dateFor.currentMonthEnd
+        //let end = dateFor.currentMonthEnd
         
         //var counter = 0
         
@@ -79,12 +79,18 @@ class TransformArray {
         var start = dateFor.currentWeekStart
         let end = dateFor.currentWeekEnd
         
+        var counter = 0
+        
         while start.compare(end) != ComparisonResult.orderedSame {
-            var counter = 0
             
-            if let value = dictionary[start] {
+            
+            if dictionary[start] == nil {
                 
-                arr.insert(value, at: counter)
+                arr.insert(0, at: counter)
+            }
+            
+            else {
+                arr.insert(dictionary[start]!, at: counter)
             }
             
             // increment the date by 1 day

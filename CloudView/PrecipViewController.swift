@@ -78,7 +78,7 @@ class PrecipViewController: UIViewController, CLLocationManagerDelegate {
             self.weekTotalPrecip.text = String(result.currentWeekPrecipArray.reduce(0, +)) + " inches"
             self.fortyEightHourPrecip.text = String(result.currentWeekPrecipArray[5]+result.currentWeekPrecipArray[6]) + " inches"
             
-            if let maxThisWeek = result.currentWeekPrecipArray.max() {
+         /*   if let maxThisWeek = result.currentWeekPrecipArray.max() {
                 if result.currentWeekPrecipArray.count > 0 {
                     self.sundayBar.frame.size.height = self.precipViewOne.frame.size.height * CGFloat(result.currentWeekPrecipArray[0]/maxThisWeek + 0.01)
                     self.sundayBar.frame.origin.y = 300-self.sundayBar.frame.size.height
@@ -160,10 +160,11 @@ class PrecipViewController: UIViewController, CLLocationManagerDelegate {
                     self.saturdayBar.frame.size.height = CGFloat(0.01/maxThisWeek)
                     self.saturdayBar.frame.origin.y = 300-self.saturdayBar.frame.size.height
                 }
-            }
+            }*/
             
         //MakeWeekBarView.drawMonthBars(self.precipViewOne, observations: result)
-        MakeMonthBarView.drawMonthBars(self.precipViewTwo, observations: result)
+        UpdateView.drawMonthBars(self.precipViewTwo, observations: result)
+        UpdateView.drawWeekBars(self.precipViewOne, observations: result)
             
         }
         

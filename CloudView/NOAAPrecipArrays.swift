@@ -17,7 +17,7 @@ class NOAAPrecipArrays {
         currentYearPrecipArray = TransformArray.toSimple(currentYearPrecipDict)
         currentYearPrecipCumulative = TransformArray.toCumulative(currentYearPrecipArray)
         currentMonthPrecipArray = TransformArray.toCurrentMonth(currentYearPrecipDict)
-        currentWeekPrecipArray = /*TransformArray.toCurrentWeek(currentYearPrecipDict)*/ [0.1, 0.2, 0.0, 0.0, 1.1, 0.5, 0]
+        currentWeekPrecipArray = TransformArray.toCurrentWeek(currentYearPrecipDict)
         
         normalYearPrecipArray = TransformArray.toSimple(normalYearPrecipDict)
         normalYearPrecipCumulative = TransformArray.toCumulative(normalYearPrecipArray)

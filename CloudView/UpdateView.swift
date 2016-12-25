@@ -10,10 +10,106 @@ import UIKit
 
 class UpdateView {
     
-    //Weekly sample data
-    //var arr:[Float] = mainWeatherData.lastYearTemperatureMaxArray
-    
+    static func drawWeekBars(_ mainView: UIView, observations: NOAAPrecipArrays) {
+        
+        var barFrames = [CGRect()]
+        var barViews = [UIView()]
+        
+        func makeRectangles() {
+            
+            for i in 0...6 {
+                
+                var value: Float = observations.currentWeekPrecipArray[i]
+               
+                if value == 0 {
+                    value = 0.005
+                }
+                
+                let maxValue: Float = observations.currentWeekPrecipArray.max()!
+                let barHeight = Int(value * 300.0/maxValue)
+                let frame = CGRect(x: 26 + 42*i, y: 300-barHeight, width: 35, height: barHeight)
+                
+                barFrames.insert(frame, at: i)
+            }
+        }
+        
+        func makeSubViews() {
+            
+            for i in 0...7 {
+                let view = UIView(frame: barFrames[i])
+                view.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+                
+                barViews.insert(view, at: i)
+            }
+        }
+        
+        
+        func addSubViews() {
+            
+            for i in 0...7 {
+                
+                mainView.addSubview(barViews[i])
+            }
+        }
+        
+        makeRectangles()
+        makeSubViews()
+        addSubViews()
+    }
 
+    
+    static func drawMonthBars(_ mainView: UIView, observations: NOAAPrecipArrays) {
+        
+        let dateComponents = DateComponents()
+        let calendar = Calendar.current
+        let date = calendar.date(from: dateComponents)!
+        
+        let range = calendar.range(of: .day, in: .month, for: date)!
+        let numDays = range.count - 1
+        
+        var barFrames = [CGRect()]
+        var barViews = [UIView()]
+        
+        func makeRectangles() {
+            
+            for i in 0...numDays {
+                
+                var value: Float = observations.currentMonthPrecipArray[i]
+                
+                if value == 0 {
+                    value = 0.005
+                }
+                let maxValue: Float = observations.currentMonthPrecipArray.max()!
+                let barHeight = Int(value * 300.0/maxValue)
+                let frame = CGRect(x: 12 + 10*i, y: 300-barHeight, width: 6, height: barHeight)
+                
+                barFrames.insert(frame, at: i)
+            }
+        }
+        
+        func makeSubViews() {
+            
+            for i in 0...numDays {
+                let view = UIView(frame: barFrames[i])
+                view.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+                
+                barViews.insert(view, at: i)
+            }
+        }
+        
+        
+        func addSubViews() {
+            
+            for i in 0...numDays {
+                
+                mainView.addSubview(barViews[i])
+            }
+        }
+        
+        makeRectangles()
+        makeSubViews()
+        addSubViews()
+    }
     
     static func drawChart(_ view: UIView, current: [Float], normal: [Float]) {
         
@@ -34,7 +130,6 @@ class UpdateView {
             var x:CGFloat = CGFloat(column) * spacer
             x += margin + 2
             return x
-            
         }
         
         // calculate the y point
@@ -50,10 +145,8 @@ class UpdateView {
             y = graphHeight + topBorder - y // Flip the graph
             return y
         }
-        // draw the line graph
         
-       // UIColor.blackColor().setFill()
-       // UIColor.blackColor().setStroke()
+        // draw the line graph
         
         //set up the points line
         let graphPath = UIBezierPath()
@@ -82,17 +175,6 @@ class UpdateView {
             graphPathTwo.addLine(to: nextPointTwo)
         }
         
-      //  graphPath.lineWidth = 2.0
-      //  graphPathTwo.lineWidth = 2.0
-      //  graphPath.stroke()
-      //  graphPathTwo.stroke()
-        
-        
-        //layerOne.position = CGPoint(x:columnXPoint(0),
-          //                       y:columnYPoint(mainWeatherData.currentYearTemperatureMaxArray[0]))
-        //layerTwo.position = CGPoint(x:columnXPoint(0),
-          //                       y:columnYPoint(mainWeatherData.currentYearTemperatureMaxArray[0]))
-        
         layerOne.path = graphPath.cgPath
         layerTwo.path = graphPathTwo.cgPath
 
@@ -108,9 +190,6 @@ class UpdateView {
         
         view.layer.addSublayer(layerTwo)
         view.layer.addSublayer(layerOne)
-        
-        //self.layer.insertSublayer(layerOne, atIndex: 0)
-        //self.layer.insertSublayer(layerTwo, atIndex: 0)
     }
     
     static func handlePrecipCompletion(_ viewOne: UIView, viewTwo: UIView, viewThree: UIView, precip: NOAAPrecipArrays) {

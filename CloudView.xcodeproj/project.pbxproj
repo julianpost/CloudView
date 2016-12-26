@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E8091CF61E1163C60060987A /* SliderDosThumbs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8091CF51E1163C60060987A /* SliderDosThumbs.swift */; };
 		E84330801DDE0E9000452583 /* DarkSkyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E843307F1DDE0E9000452583 /* DarkSkyRouter.swift */; };
 		E8471BBF1DCD14AA007EF8E0 /* NOAAStationFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8471BBE1DCD14AA007EF8E0 /* NOAAStationFile.swift */; };
 		E85F7BA11DBBEAE0007A5C55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BA01DBBEAE0007A5C55 /* AppDelegate.swift */; };
@@ -15,7 +16,6 @@
 		E85F7BB31DBBEB14007A5C55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E85F7BB21DBBEB14007A5C55 /* Main.storyboard */; };
 		E85F7BB71DBBEB53007A5C55 /* UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BB61DBBEB53007A5C55 /* UpdateView.swift */; };
 		E85F7BB91DBBEB5D007A5C55 /* TempViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BB81DBBEB5D007A5C55 /* TempViewController.swift */; };
-		E85F7BBB1DBBEB64007A5C55 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BBA1DBBEB64007A5C55 /* SettingsViewController.swift */; };
 		E85F7BBD1DBBEB6C007A5C55 /* SettingsDataArrays.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BBC1DBBEB6C007A5C55 /* SettingsDataArrays.swift */; };
 		E85F7BBF1DBBEB71007A5C55 /* PrecipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BBE1DBBEB71007A5C55 /* PrecipViewController.swift */; };
 		E85F7BC11DBBEB7D007A5C55 /* LocationFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F7BC01DBBEB7D007A5C55 /* LocationFinderViewController.swift */; };
@@ -36,6 +36,7 @@
 		18DC5E18C218C8A1B980AD0D /* Pods-CloudView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloudView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CloudView/Pods-CloudView.debug.xcconfig"; sourceTree = "<group>"; };
 		57D06E6E78697FA393437BBA /* Pods-CloudView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloudView.release.xcconfig"; path = "Pods/Target Support Files/Pods-CloudView/Pods-CloudView.release.xcconfig"; sourceTree = "<group>"; };
 		74A38990F51C8DDCE8455E06 /* Pods_CloudView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CloudView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8091CF51E1163C60060987A /* SliderDosThumbs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderDosThumbs.swift; sourceTree = "<group>"; };
 		E843307F1DDE0E9000452583 /* DarkSkyRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarkSkyRouter.swift; sourceTree = "<group>"; };
 		E8471BBE1DCD14AA007EF8E0 /* NOAAStationFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NOAAStationFile.swift; sourceTree = "<group>"; };
 		E85F7B9D1DBBEAE0007A5C55 /* CloudView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,7 +47,6 @@
 		E85F7BB21DBBEB14007A5C55 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E85F7BB61DBBEB53007A5C55 /* UpdateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateView.swift; sourceTree = "<group>"; };
 		E85F7BB81DBBEB5D007A5C55 /* TempViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempViewController.swift; sourceTree = "<group>"; };
-		E85F7BBA1DBBEB64007A5C55 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E85F7BBC1DBBEB6C007A5C55 /* SettingsDataArrays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDataArrays.swift; sourceTree = "<group>"; };
 		E85F7BBE1DBBEB71007A5C55 /* PrecipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrecipViewController.swift; sourceTree = "<group>"; };
 		E85F7BC01DBBEB7D007A5C55 /* LocationFinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationFinderViewController.swift; sourceTree = "<group>"; };
@@ -135,7 +135,6 @@
 				E85F7BBE1DBBEB71007A5C55 /* PrecipViewController.swift */,
 				E85F7BB81DBBEB5D007A5C55 /* TempViewController.swift */,
 				E85F7BC01DBBEB7D007A5C55 /* LocationFinderViewController.swift */,
-				E85F7BBA1DBBEB64007A5C55 /* SettingsViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -155,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				E85F7BB61DBBEB53007A5C55 /* UpdateView.swift */,
+				E8091CF51E1163C60060987A /* SliderDosThumbs.swift */,
 				E8975D931DD39D190033C4EC /* Location.swift */,
 				E85F7BC41DBBEB9B007A5C55 /* DateHandler.swift */,
 				E85F7BC61DBBEBA8007A5C55 /* ArrayCalculations.swift */,
@@ -295,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8091CF61E1163C60060987A /* SliderDosThumbs.swift in Sources */,
 				E84330801DDE0E9000452583 /* DarkSkyRouter.swift in Sources */,
 				E85F7BC51DBBEB9B007A5C55 /* DateHandler.swift in Sources */,
 				E85F7BB91DBBEB5D007A5C55 /* TempViewController.swift in Sources */,
@@ -304,7 +305,6 @@
 				E85F7BBD1DBBEB6C007A5C55 /* SettingsDataArrays.swift in Sources */,
 				E89AB31E1DCA434A0087A2CE /* DSDaily.swift in Sources */,
 				E85F7BB71DBBEB53007A5C55 /* UpdateView.swift in Sources */,
-				E85F7BBB1DBBEB64007A5C55 /* SettingsViewController.swift in Sources */,
 				E85F7BC71DBBEBA8007A5C55 /* ArrayCalculations.swift in Sources */,
 				E85F7BC31DBBEB95007A5C55 /* FetchAllData.swift in Sources */,
 				E8C4418D1DCB73F8005B8007 /* APIManager.swift in Sources */,

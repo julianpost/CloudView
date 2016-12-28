@@ -188,6 +188,8 @@ class UpdateView {
         layerOne.fillColor = nil
         layerTwo.fillColor = nil
         
+        view.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+        
         view.layer.addSublayer(layerTwo)
         view.layer.addSublayer(layerOne)
     }

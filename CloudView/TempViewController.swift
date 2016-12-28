@@ -15,11 +15,12 @@ class TempViewController: UIViewController {
     @IBOutlet weak var minTempOne: UISlider!
     @IBOutlet weak var maxTempOne: UISlider!
     
-    
     @IBOutlet weak var minTempOneLbl: UILabel!
     @IBOutlet weak var maxTempOneLbl: UILabel!
     
     @IBOutlet var slider2:UIXRangeSlider!
+    
+    var tempData: NOAATempArrays?
     
    /* @IBAction func minTempOneChanged() {
         mainSettingsData.minTempOne = Int(minTempOne.value)
@@ -32,13 +33,30 @@ class TempViewController: UIViewController {
         
     }*/
     
+    /*func retrieveTempData() -> NOAATempArrays {
+        var tempData:
+        APIManager.sharedInstance.fetchTemp() { result in
+            UpdateView.handleTempCompletion(self.tempViewOne, temp: result)
+        tempData = result
+        }
+        return tempData as! NOAATempArrays
+    }*/
+    
     @IBAction func sliderChanged() {
         
         mainSettingsData.minTempOne = Int(slider2.leftValue)
         mainSettingsData.maxTempOne = Int(slider2.rightValue)
         minTempOneLbl.text = "\(mainSettingsData.minTempOne)"
-          maxTempOneLbl.text = "\(mainSettingsData.maxTempOne)"
+        maxTempOneLbl.text = "\(mainSettingsData.maxTempOne)"
+        print("doing change stuff")
         
+        if let result = mainTempArray {
+            mainTempArray?.currentYearDegreeDayOneCumulative = TransformArray.toCumulative(TransformArray.toDegreeDay(mainSettingsData.minTempOne, maxTemp: mainSettingsData.maxTempOne, tMin: result.currentYearTemperatureMinArray, tMax: result.currentYearTemperatureMaxArray))
+            mainTempArray?.normalYearDegreeDayOneCumulative = TransformArray.toCumulative(TransformArray.toDegreeDay(mainSettingsData.minTempOne, maxTemp: mainSettingsData.maxTempOne, tMin: result.normalYearTemperatureMinArray, tMax: result.normalYearTemperatureMaxArray))
+            UpdateView.handleTempCompletion(self.tempViewOne, temp: result)
+            print("updated the chart")
+        }
+        //tempViewOne.setNeedsDisplay()
     }
     
     @IBAction func dismissView(_ sender: AnyObject) {
@@ -51,8 +69,21 @@ class TempViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        APIManager.sharedInstance.fetchTemp() { result in
+        if mainTempArray == nil {
+            APIManager.sharedInstance.fetchTemp() { result in
+                UpdateView.handleTempCompletion(self.tempViewOne, temp: result)
+                mainTempArray = result
+            }
+        }
+        
+        else {
+            
+            if let result = mainTempArray {
+            mainTempArray?.currentYearDegreeDayOneCumulative = TransformArray.toCumulative(TransformArray.toDegreeDay(mainSettingsData.minTempOne, maxTemp: mainSettingsData.maxTempOne, tMin: result.currentYearTemperatureMinArray, tMax: result.currentYearTemperatureMaxArray))
+            mainTempArray?.normalYearDegreeDayOneCumulative = TransformArray.toCumulative(TransformArray.toDegreeDay(mainSettingsData.minTempOne, maxTemp: mainSettingsData.maxTempOne, tMin: result.normalYearTemperatureMinArray, tMax: result.normalYearTemperatureMaxArray))
             UpdateView.handleTempCompletion(self.tempViewOne, temp: result)
+            }
+        
         }
         
         /*minTempOne.value = Float(mainSettingsData.minTempOne)

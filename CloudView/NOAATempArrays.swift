@@ -43,3 +43,5 @@ class NOAATempArrays {
         
     }
 }
+
+var mainTempArray: NOAATempArrays?

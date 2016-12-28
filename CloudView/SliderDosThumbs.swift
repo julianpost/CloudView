@@ -639,8 +639,8 @@ extension UIXRangeSlider
     func configureDefaultLeftThumbView(_ view : UIImageView)
     {
         view.image = nil
-        view.frame = CGRect(x: 0, y: 0, width: 27, height: 27)
-        let path = UIBezierPath(arcCenter: CGPoint(x: 13.5, y: 13.5), radius: CGFloat(13.5), startAngle: CGFloat(0), endAngle:CGFloat(M_PI * 2), clockwise: true)
+        view.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        let path = UIBezierPath(arcCenter: CGPoint(x: 20, y: 20), radius: CGFloat(20), startAngle: CGFloat(0), endAngle:CGFloat(M_PI * 2), clockwise: true)
         path.close()
         let layer = CAShapeLayer()
         layer.path = path.cgPath
@@ -659,8 +659,8 @@ extension UIXRangeSlider
     func configureDefaultRightThumbView(_ view : UIImageView)
     {
         view.image = nil
-        view.frame = CGRect(x: 0, y: 0, width: 27, height: 27)
-        let path = UIBezierPath(arcCenter: CGPoint(x: 13.5, y: 13.5), radius: CGFloat(13.5), startAngle: CGFloat(0), endAngle:CGFloat(M_PI * 2), clockwise: false)
+        view.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        let path = UIBezierPath(arcCenter: CGPoint(x: 20, y: 20), radius: CGFloat(20), startAngle: CGFloat(0), endAngle:CGFloat(M_PI * 2), clockwise: false)
         path.close()
         let layer = CAShapeLayer()
         layer.path = path.cgPath

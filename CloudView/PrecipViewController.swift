@@ -19,14 +19,8 @@ class PrecipViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var bottomLabel: UILabel!
     
-    @IBOutlet weak var weekTotalPrecip: UILabel!
-    @IBOutlet weak var fortyEightHourPrecip: UILabel!
-    @IBOutlet weak var monthTotalPrecip: UILabel!
-    @IBOutlet weak var avgMonthByNow: UILabel!
-    @IBOutlet weak var seasonTotalPrecip: UILabel!
-    @IBOutlet weak var avgSeasonByNow: UILabel!
-    
-    //var gists = [NOAAStationFile]()
+    @IBOutlet weak var topValue: UILabel!
+    @IBOutlet weak var bottomValue: UILabel!
     
     var placesClient: GMSPlacesClient?
     let locationManager = CLLocationManager()
@@ -34,66 +28,76 @@ class PrecipViewController: UIViewController, CLLocationManagerDelegate {
     
     
     @IBAction func indexChanged(_ sender: UISegmentedControl) {
+        
+        if let result = mainPrecipArray {
         switch sender.selectedSegmentIndex
         {
         case 0:
             topLabel.text = "Week total"
             bottomLabel.text = "Past 48 hours"
+            topValue.text = result.weekTotalPrecip
+            bottomValue.text = result.fortyEightHourPrecip
             precipViewOne.layer.isHidden = false
             precipViewTwo.layer.isHidden = true
             precipViewThree.layer.isHidden = true
             
-            weekTotalPrecip.layer.isHidden = false
+           /* weekTotalPrecip.layer.isHidden = false
             fortyEightHourPrecip.layer.isHidden = false
             monthTotalPrecip.layer.isHidden = true
             avgMonthByNow.layer.isHidden = true
             seasonTotalPrecip.layer.isHidden = true
-            avgSeasonByNow.layer.isHidden = true
+            avgSeasonByNow.layer.isHidden = true*/
             
             
         case 1:
             topLabel.text = "Month total"
             bottomLabel.text = "This month by now"
+            topValue.text = result.monthTotalPrecip
+            bottomValue.text = "TBC"
             precipViewOne.layer.isHidden = true
             precipViewTwo.layer.isHidden = false
             precipViewThree.layer.isHidden = true
             
-            weekTotalPrecip.layer.isHidden = true
+            /*weekTotalPrecip.layer.isHidden = true
             fortyEightHourPrecip.layer.isHidden = true
             monthTotalPrecip.layer.isHidden = false
             avgMonthByNow.layer.isHidden = false
             seasonTotalPrecip.layer.isHidden = true
-            avgSeasonByNow.layer.isHidden = true
+            avgSeasonByNow.layer.isHidden = true*/
            
             
         case 2:
             topLabel.text = "Season total"
             bottomLabel.text = "This season by now"
+            topValue.text = result.seasonTotalPrecip
+            bottomValue.text = "TBC"
             precipViewOne.layer.isHidden = true
             precipViewTwo.layer.isHidden = true
             precipViewThree.layer.isHidden = false
             
-            weekTotalPrecip.layer.isHidden = true
+           /* weekTotalPrecip.layer.isHidden = true
             fortyEightHourPrecip.layer.isHidden = true
             monthTotalPrecip.layer.isHidden = true
             avgMonthByNow.layer.isHidden = true
             seasonTotalPrecip.layer.isHidden = false
-            avgSeasonByNow.layer.isHidden = false
-            
+            avgSeasonByNow.layer.isHidden = false*/
             
         default:
             topLabel.text = ""
             bottomLabel.text = ""
+            topValue.text = ""
+            bottomValue.text = ""
             precipViewOne.layer.isHidden = true
             precipViewTwo.layer.isHidden = true
             precipViewThree.layer.isHidden = true
-            weekTotalPrecip.layer.isHidden = true
+            /*weekTotalPrecip.layer.isHidden = true
             fortyEightHourPrecip.layer.isHidden = true
             monthTotalPrecip.layer.isHidden = true
             avgMonthByNow.layer.isHidden = true
             seasonTotalPrecip.layer.isHidden = true
-            avgSeasonByNow.layer.isHidden = true
+            avgSeasonByNow.layer.isHidden = true*/
             
+        }
         }
     }
     
@@ -111,19 +115,15 @@ class PrecipViewController: UIViewController, CLLocationManagerDelegate {
             
            UpdateView.handlePrecipCompletion(self.precipViewOne, viewTwo: self.precipViewTwo, viewThree: self.precipViewThree, precip: result)
             
-            print(result.currentWeekPrecipArray)
-            
-            self.weekTotalPrecip.text = String(result.currentWeekPrecipArray.reduce(0, +)) + " inches"
-            self.fortyEightHourPrecip.text = String(result.currentWeekPrecipArray[5]+result.currentWeekPrecipArray[6]) + " inches"
-            
-            self.monthTotalPrecip.text = String(result.currentMonthPrecipArray.reduce(0, +)) + " inches"
-            self.avgMonthByNow.text = "TBC"
-            
-            self.seasonTotalPrecip.text = String(result.currentYearPrecipArray.reduce(0, +)) + " inches"
-            self.avgSeasonByNow.text = "TBC"
+        mainPrecipArray = result
             
         UpdateView.drawMonthBars(self.precipViewTwo, observations: result)
         UpdateView.drawWeekBars(self.precipViewOne, observations: result)
+            
+        self.topLabel.text = "Week total"
+        self.bottomLabel.text = "Past 48 hours"
+        self.topValue.text = result.weekTotalPrecip
+        self.bottomValue.text = result.fortyEightHourPrecip
             
         }
         
@@ -131,12 +131,12 @@ class PrecipViewController: UIViewController, CLLocationManagerDelegate {
         precipViewTwo.layer.isHidden = true
         precipViewThree.layer.isHidden = true
         
-        weekTotalPrecip.layer.isHidden = false
+        /*weekTotalPrecip.layer.isHidden = false
         fortyEightHourPrecip.layer.isHidden = false
         monthTotalPrecip.layer.isHidden = true
         avgMonthByNow.layer.isHidden = true
         seasonTotalPrecip.layer.isHidden = true
-        avgSeasonByNow.layer.isHidden = true
+        avgSeasonByNow.layer.isHidden = true*/
     }
     
     override func didReceiveMemoryWarning() {

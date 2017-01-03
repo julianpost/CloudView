@@ -15,6 +15,12 @@ class UpdateView {
         var barFrames = [CGRect()]
         var barViews = [UIView()]
         
+        mainView.backgroundColor = UIColor.lightGray
+        mainView.layer.cornerRadius = 6.0
+        mainView.layer.masksToBounds = true
+        mainView.layer.borderWidth = 0.0
+       // mainView.layer.borderColor = UIColor.white.cgColor
+        
         func makeRectangles() {
             
             for i in 0...6 {
@@ -25,7 +31,16 @@ class UpdateView {
                     value = 0.005
                 }
                 
-                let maxValue: Float = observations.currentWeekPrecipArray.max()!
+                let maxValue: Float
+                
+                if observations.currentMonthPrecipArray.max()! == 0 {
+                    maxValue = 1
+                }
+                    
+                else {
+                    maxValue = observations.currentMonthPrecipArray.max()!
+                }
+                
                 let barHeight = Int(value * 300.0/maxValue)
                 let frame = CGRect(x: 26 + 42*i, y: 300-barHeight, width: 35, height: barHeight)
                 
@@ -70,6 +85,12 @@ class UpdateView {
         var barFrames = [CGRect()]
         var barViews = [UIView()]
         
+        mainView.backgroundColor = UIColor.lightGray
+        mainView.layer.cornerRadius = 6.0
+        mainView.layer.masksToBounds = true
+        mainView.layer.borderWidth = 0.0
+       // mainView.layer.borderColor = UIColor.white.cgColor
+        
         func makeRectangles() {
             
             for i in 0...numDays {
@@ -79,7 +100,17 @@ class UpdateView {
                 if value == 0 {
                     value = 0.005
                 }
-                let maxValue: Float = observations.currentMonthPrecipArray.max()!
+                
+                let maxValue: Float
+                
+                if observations.currentMonthPrecipArray.max()! == 0 {
+                    maxValue = 1
+                }
+                    
+                else {
+                    maxValue = observations.currentMonthPrecipArray.max()!
+                }
+                
                 let barHeight = Int(value * 300.0/maxValue)
                 let frame = CGRect(x: 12 + 10*i, y: 300-barHeight, width: 6, height: barHeight)
                 
@@ -118,6 +149,12 @@ class UpdateView {
         
         let width = view.frame.width
         let height = view.frame.height
+        
+        view.backgroundColor = UIColor.lightGray
+        view.layer.cornerRadius = 6.0
+        view.layer.masksToBounds = true
+        view.layer.borderWidth = 0.0
+        //view.layer.borderColor = UIColor.white.cgColor
         
       
         //calculate the x point

@@ -16,19 +16,19 @@ class NOAATempArrays {
     
     init(fromCurrentYearTMax currentYearTemperatureMaxDict: [Date : Float], fromNormalYearTMax normalYearTemperatureMaxDict: [Date : Float], fromCurrentYearTemperatureMin currentYearTemperatureMinDict: [Date : Float], fromNormalYearTemperatureMin normalYearTemperatureMinDict: [Date : Float]) {
         
-        currentYearTemperatureMaxArray = TransformArray.toSimple(currentYearTemperatureMaxDict)
+        currentYearTemperatureMaxArray = TransformArray.toCurrentYear(currentYearTemperatureMaxDict)
         currentMonthTemperatureMaxArray = TransformArray.toNormalMonth(currentYearTemperatureMaxDict)
         currentWeekTemperatureMaxArray = TransformArray.toNormalWeek(currentYearTemperatureMaxDict)
         
-        normalYearTemperatureMaxArray = TransformArray.toSimple(normalYearTemperatureMaxDict)
+        normalYearTemperatureMaxArray = TransformArray.toNormalYear(normalYearTemperatureMaxDict)
         normalMonthTemperatureMaxArray = TransformArray.toNormalMonth(normalYearTemperatureMaxDict)
         normalWeekTemperatureMaxArray = TransformArray.toNormalWeek(normalYearTemperatureMaxDict)
         
-        currentYearTemperatureMinArray = TransformArray.toSimple(currentYearTemperatureMinDict)
+        currentYearTemperatureMinArray = TransformArray.toCurrentYear(currentYearTemperatureMinDict)
         currentMonthTemperatureMinArray = TransformArray.toNormalMonth(currentYearTemperatureMinDict)
         currentWeekTemperatureMinArray = TransformArray.toNormalWeek(currentYearTemperatureMinDict)
         
-        normalYearTemperatureMinArray = TransformArray.toSimple(normalYearTemperatureMinDict)
+        normalYearTemperatureMinArray = TransformArray.toNormalYear(normalYearTemperatureMinDict)
         normalMonthTemperatureMinArray = TransformArray.toNormalMonth(normalYearTemperatureMinDict)
         normalWeekTemperatureMinArray = TransformArray.toNormalWeek(normalYearTemperatureMinDict)
         

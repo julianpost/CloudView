@@ -10,7 +10,7 @@ import Foundation
 
 class TransformArray {
     
-    static func toSimple(_ dictionary: [Foundation.Date:Float]) -> [Float] {
+    static func toSimple(_ dictionary: [Date:Float]) -> [Float] {
         
         let sortedArray = dictionary.sorted { $0.0.compare($1.0) == .orderedAscending }
         
@@ -22,6 +22,100 @@ class TransformArray {
         return arr
     }
     
+    static func toCurrentYear(_ dictionary: [Date:Float]) -> [Float] {
+        
+       // let dateComponents = DateComponents()
+        let calendar = Calendar.current
+        let date = dateFor.currentYearStart
+        
+        let range = calendar.range(of: .day, in: .year, for: date)!
+        let numDays = range.count
+        
+        var arr: [Float] = []
+        //let today = Foundation.Date()
+        let gregorian: Calendar! = Calendar(identifier: Calendar.Identifier.gregorian)
+        
+        var start = dateFor.currentYearStart
+        //let end = dateFor.currentMonthEnd
+        
+        //var counter = 0
+        
+        for i in 0...numDays-1 {
+            
+            if dictionary[start] == nil {
+                let value: Float = 0
+                arr.insert(value, at: i)
+                
+            }
+            else {
+                
+                let value = dictionary[start]
+                
+                //arr[counter] = value
+                arr.insert(value!, at: i)
+            }
+            
+            // increment the date by 1 day
+            var dateComponents = DateComponents()
+            dateComponents.day = 1
+            start = gregorian.date(byAdding: dateComponents, to: start)!
+            
+            // increment the counter by 1
+            
+            //counter += 1
+        }
+        
+        
+        return arr
+    }
+   
+    static func toNormalYear(_ dictionary: [Date:Float]) -> [Float] {
+        
+        //let dateComponents = DateComponents()
+        let calendar = Calendar.current
+        let date = dateFor.normalYearStart
+        
+        let range = calendar.range(of: .day, in: .year, for: date)!
+        let numDays = range.count
+        
+        var arr: [Float] = []
+        //let today = Foundation.Date()
+        let gregorian: Calendar! = Calendar(identifier: Calendar.Identifier.gregorian)
+        
+        var start = dateFor.normalYearStart
+        //let end = dateFor.currentMonthEnd
+        
+        //var counter = 0
+        
+        for i in 0...numDays-1 {
+            
+            if dictionary[start] == nil {
+                let value: Float = 0
+                arr.insert(value, at: i)
+                
+            }
+            else {
+                
+                let value = dictionary[start]
+                
+                //arr[counter] = value
+                arr.insert(value!, at: i)
+            }
+            
+            // increment the date by 1 day
+            var dateComponents = DateComponents()
+            dateComponents.day = 1
+            start = gregorian.date(byAdding: dateComponents, to: start)!
+            
+            // increment the counter by 1
+            
+            //counter += 1
+        }
+        
+        
+        return arr
+    }
+
     
     static func toCurrentMonth(_ dictionary: [Date:Float]) -> [Float] {
         
@@ -41,7 +135,7 @@ class TransformArray {
         
         //var counter = 0
         
-        for i in 0...numDays {
+        for i in 0...numDays-1 {
             
             if dictionary[start] == nil {
                 let value: Float = 0

@@ -106,7 +106,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="e9Y-33-kjg">
-                                <rect key="frame" x="20" y="512" width="374" height="29"/>
+                                <rect key="frame" x="20" y="633" width="374" height="29"/>
                                 <segments>
                                     <segment title="Week"/>
                                     <segment title="Month"/>
@@ -117,11 +117,11 @@
                                 </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bBc-J5-h6g">
-                                <rect key="frame" x="40.666666666666657" y="84" width="333" height="300"/>
+                                <rect key="frame" x="37.333333333333343" y="84" width="340" height="300"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="mcN-YT-i0Q"/>
-                                    <constraint firstAttribute="width" constant="333" id="mwP-g7-i4l"/>
+                                    <constraint firstAttribute="width" constant="340" id="mwP-g7-i4l"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6X-4Y-Cst">
@@ -141,7 +141,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAZ-fx-yIA" userLabel="Top Value">
-                                <rect key="frame" x="204" y="422" width="150" height="20"/>
+                                <rect key="frame" x="204" y="543" width="150" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="dM7-P4-8pq"/>
                                     <constraint firstAttribute="width" constant="150" id="gPq-RA-62R"/>
@@ -151,7 +151,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Past 48 hours:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CWO-mm-Y0y">
-                                <rect key="frame" x="16" y="462" width="180" height="20"/>
+                                <rect key="frame" x="16" y="583" width="180" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="2La-eu-4sW"/>
                                     <constraint firstAttribute="height" constant="20" id="d2T-5h-lla"/>
@@ -161,7 +161,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myq-A3-hYK" userLabel="Bottom Value">
-                                <rect key="frame" x="204" y="462" width="150" height="20"/>
+                                <rect key="frame" x="204" y="583" width="150" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="bJU-lP-uEp"/>
                                     <constraint firstAttribute="height" constant="20" id="pr1-mM-ivL"/>
@@ -171,7 +171,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Week total:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0O-Zp-8Dy">
-                                <rect key="frame" x="16" y="422" width="180" height="20"/>
+                                <rect key="frame" x="16" y="543" width="180" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="TIf-9L-iXn"/>
                                     <constraint firstAttribute="height" constant="20" id="itw-5I-Nyg"/>
@@ -190,7 +190,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="e9Y-33-kjg" secondAttribute="trailing" id="D1H-EF-L4C"/>
                             <constraint firstItem="a0O-Zp-8Dy" firstAttribute="trailing" secondItem="CWO-mm-Y0y" secondAttribute="trailing" id="Dom-jJ-PjA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="myq-A3-hYK" secondAttribute="trailing" constant="40" id="JL4-Ux-K7z"/>
-                            <constraint firstItem="VM3-58-S0K" firstAttribute="top" secondItem="e9Y-33-kjg" secondAttribute="bottom" constant="196" id="LeD-ie-oGp"/>
+                            <constraint firstItem="VM3-58-S0K" firstAttribute="top" secondItem="e9Y-33-kjg" secondAttribute="bottom" constant="75" id="LeD-ie-oGp"/>
                             <constraint firstItem="f6X-4Y-Cst" firstAttribute="top" secondItem="Hp0-jr-mf7" secondAttribute="bottom" constant="20" id="Rhm-Xa-v0Z"/>
                             <constraint firstItem="f6X-4Y-Cst" firstAttribute="centerX" secondItem="VJg-WK-wwm" secondAttribute="centerX" id="SWb-D7-9Sv"/>
                             <constraint firstItem="e9Y-33-kjg" firstAttribute="top" secondItem="CWO-mm-Y0y" secondAttribute="bottom" constant="30" id="TTY-aw-qEc"/>

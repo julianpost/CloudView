@@ -40,6 +40,7 @@ class APIManager {
         
         Alamofire.request(NOAARouter.getCurrentYearPrecip())
         .responseJSON { response in
+            debugPrint(response)
                 if let values = self.nOAAArrayFromResponse(response: response).value {
                     currentYearPrecip = values
                     currentYearPrecipBool = true

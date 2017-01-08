@@ -68,16 +68,33 @@ class DateFunctions {
         
         var todaysDateComponents = (userCalendar as NSCalendar).components(requestedDateComponents, from: today)
         
-        todaysDateComponents.day = 1
+        todaysDateComponents.day! -= 28
         
         return userCalendar.date(from: todaysDateComponents)!
+        
+        /*  let userCalendar = Calendar.current
+        
+        let today = Calendar.current.startOfDay(for: todaysDate)
+        
+        let requestedDateComponents: NSCalendar.Unit = [.year, .month, .day]
+        
+        var todaysDateComponents = (userCalendar as NSCalendar).components(requestedDateComponents, from: today)
+        
+        todaysDateComponents.day = 1
+        
+        return userCalendar.date(from: todaysDateComponents)!*/
         
     }
     
     static func currentMonthEndMath(_ todaysDate: Date) -> Date {
+      
+        let today = Calendar.current.startOfDay(for: todaysDate)
         
-        let startOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: todaysDate)))!
-        return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: startOfMonth)!
+        let endDate = today
+        return endDate
+        
+      /*  let startOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: todaysDate)))!
+        return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: startOfMonth)!*/
     }
     
     static func currentWeekStartMath(_ todaysDate: Date) -> Date {

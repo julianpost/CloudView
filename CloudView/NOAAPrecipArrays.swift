@@ -16,12 +16,12 @@ class NOAAPrecipArrays {
     
     init(fromCurrentYearPrecip currentYearPrecipDict: [Date : Float], fromNormalYearPrecip normalYearPrecipDict: [Date : Float]) {
         
-        currentYearPrecipArray = TransformArray.toCurrentYear(currentYearPrecipDict)
+        currentYearPrecipArray = TransformArray.toSimple(currentYearPrecipDict)
         currentYearPrecipCumulative = TransformArray.toCumulative(currentYearPrecipArray)
         currentMonthPrecipArray = TransformArray.toCurrentMonth(currentYearPrecipDict)
         currentWeekPrecipArray = TransformArray.toCurrentWeek(currentYearPrecipDict)
         
-        normalYearPrecipArray = TransformArray.toNormalYear(normalYearPrecipDict)
+        normalYearPrecipArray = TransformArray.toSimple(normalYearPrecipDict)
         normalYearPrecipCumulative = TransformArray.toCumulative(normalYearPrecipArray)
         normalMonthPrecipArray = TransformArray.toNormalMonth(normalYearPrecipDict)
         normalWeekPrecipArray = TransformArray.toNormalWeek(normalYearPrecipDict)

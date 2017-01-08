@@ -118,8 +118,40 @@ class TransformArray {
 
     
     static func toCurrentMonth(_ dictionary: [Date:Float]) -> [Float] {
+       
+        var arr: [Float] = []
         
-        let dateComponents = DateComponents()
+        let gregorian: Calendar! = Calendar(identifier: Calendar.Identifier.gregorian)
+        
+        var start = dateFor.currentMonthtStart
+        let end = dateFor.currentMonthEnd
+        
+        var counter = 0
+        
+        while start.compare(end) != ComparisonResult.orderedSame {
+            
+            
+            if dictionary[start] == nil {
+                
+                arr.insert(0, at: counter)
+            }
+                
+            else {
+                arr.insert(dictionary[start]!, at: counter)
+            }
+            
+            // increment the date by 1 day
+            var dateComponents = DateComponents()
+            dateComponents.day = 1
+            start = gregorian.date(byAdding: dateComponents, to: start)!
+            
+            counter += 1
+        }
+        
+        
+        return arr
+        
+      /*  let dateComponents = DateComponents()
         let calendar = Calendar.current
         let date = calendar.date(from: dateComponents)!
         
@@ -161,10 +193,10 @@ class TransformArray {
         }
 
     
-        return arr
+        return arr*/
     }
     
-    static func toCurrentWeek(_ dictionary: [Foundation.Date:Float]) -> [Float] {
+    static func toCurrentWeek(_ dictionary: [Date:Float]) -> [Float] {
         
         var arr: [Float] = []
         

@@ -41,7 +41,7 @@ class UpdateView {
                     maxValue = observations.currentMonthPrecipArray.max()!
                 }
                 
-                let barHeight = Int(value * 300.0/maxValue)
+                let barHeight = Int(value * 290.0/maxValue)
                 let frame = CGRect(x: 26 + 42*i, y: 300-barHeight, width: 35, height: barHeight)
                 
                 barFrames.insert(frame, at: i)
@@ -93,12 +93,12 @@ class UpdateView {
         
         func makeRectangles() {
             
-            for i in 0...numDays {
+            for i in 0...27 {
                 
                 var value: Float = observations.currentMonthPrecipArray[i]
                 
                 if value == 0 {
-                    value = 0.005
+                    value = 0.002
                 }
                 
                 let maxValue: Float
@@ -111,7 +111,7 @@ class UpdateView {
                     maxValue = observations.currentMonthPrecipArray.max()!
                 }
                 
-                let barHeight = Int(value * 300.0/maxValue)
+                let barHeight = Int(value * 290.0/maxValue)
                 let frame = CGRect(x: 12 + 10*i, y: 300-barHeight, width: 6, height: barHeight)
                 
                 barFrames.insert(frame, at: i)
@@ -120,7 +120,7 @@ class UpdateView {
         
         func makeSubViews() {
             
-            for i in 0...numDays {
+            for i in 0...27 {
                 let view = UIView(frame: barFrames[i])
                 view.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
                 
@@ -131,7 +131,7 @@ class UpdateView {
         
         func addSubViews() {
             
-            for i in 0...numDays {
+            for i in 0...27 {
                 
                 mainView.addSubview(barViews[i])
             }
